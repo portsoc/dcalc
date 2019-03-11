@@ -2,7 +2,8 @@
 
 ## todo
 
-* [ ] version control
+* [x] version control
 * [ ] validation
+* [ ] github
 * [ ] ...
 * [ ] profit!
