@@ -6,9 +6,9 @@
 * [x] desktop view
 * [x] github
 * [ ] calculate rules
-  * [ ] rule a)
-  * [ ] rule b)
-  * [ ] rule c)
+  * [x] rule a)
+  * [x] rule b)
+  * [x] rule c)
 * [ ] validation
 * [ ] saving
 * [ ] offline
