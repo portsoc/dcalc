@@ -6,6 +6,8 @@ If you're a student, it may be interesting to see how your current/predicted gra
 
 [Try it now](https://portsoc.github.io/dcalc/)
 
+Please add suggestions & bug reports to the [issue list](https://github.com/portsoc/dcalc/issues).
+
 # Credits
 * It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
 * Props to Dan Harper who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
