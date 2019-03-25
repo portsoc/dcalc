@@ -47,7 +47,7 @@ function reverseNumericalComparison(a, b) {
 function ruleA(marks) {
   const l5mean = mean(marks.prepared.l5);
   const l6mean = mean(marks.prepared.l6);
-  return l5mean * 0.4 + l6mean * 0.6;
+  return Math.round(l5mean * 0.4 + l6mean * 0.6);
 }
 
 function ruleB(marks) {
@@ -57,7 +57,7 @@ function ruleB(marks) {
 function ruleC(marks) {
   const allMarks = marks.prepared.l5.concat(marks.prepared.l6);
   allMarks.sort(reverseNumericalComparison);
-  return allMarks[allMarks.length / 2 + 1];
+  return Math.round(allMarks[allMarks.length / 2]);
 }
 
 function mean(array) {
@@ -66,7 +66,7 @@ function mean(array) {
     sum += num;
   }
   const mean = sum/array.length;
-  return mean;
+  return Math.round(mean);
 }
 
 function toClassification(mark) {
