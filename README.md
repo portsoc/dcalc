@@ -20,7 +20,7 @@
 * [ ] "send a link" feature with pre-filled numbers
 * [ ] Include the full text of each rule later in the page, linked from where the rule preductions are shown.
 * [ ] GPA Predictor
-  * GPA grade conversions after rounding are as follows [from, to, GP]
+  * GPA grade conversions are as follows [from, to, GP]
 ```JSON
         [
             [ 75, 100, 4.25 ],
@@ -38,4 +38,6 @@
             [ 35, 37, 0.75 ],
             [ 30, 34, 0.50 ],
             [ 0, 28 0.00 ]
-]
+        ]
+```
+  * the marks above are after rounding: .5 rounds up, *9 becomes the next 10.
