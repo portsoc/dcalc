@@ -96,6 +96,20 @@ input:focus {
   }
 }
 
+#source {
+  font-family: "Aero", "Calibri", sans-serif;
+  font-weight: bold;
+  display: inline-block;
+  background: #621360;
+  padding: 4em 10em 1ex;
+  color: white;
+  position: absolute;
+  right: -23ex;
+  top: -5ex;
+  transform: rotate(45deg);
+  text-decoration: none;
+}
+
 @media screen and (min-width: 70rem) {
   main, header {
     max-width: 70rem;
@@ -132,3 +146,4 @@ input:focus {
     --hibg: #CCC;
   }
 }
+
