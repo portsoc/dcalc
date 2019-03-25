@@ -1,43 +1,9 @@
-# Portsmouth Degree Calculator
+# Portsmouth Degree Calculator App
 
-## todo
+University of Portsmouth calculates final degree classification in three ways, and has recently added the Grade Point Average (GPA) to graduate's transcripts.  This app _indicates_ how module marks can combine to form a final degree classification, it also calculates an incicative GPA.
 
-* [x] version control
-* [x] desktop view
-* [x] github
-* [ ] calculate rules
-  * [x] rule a = (Mean of Year 2 * 0.4) + (Mean of Year 3 * 0.6)  
-  * [x] rule b = (Mean of Year 3)
-  * [x] rule c = (Median grade of year 2 and year 3)
-* [ ] validation
-* [ ] saving
-* [ ] offline
-  * [ ] Icons
-  * [ ] Code (a cacheing "Service Worker")
+If you're a student, it may be interesting to see how your current/predicted grades might affect your final classification.  Remember too, that it's not all about the grades - they may show capability, but they can never reflect who you are or how well you'll fit & contribute to any team.
 
-## maybe
-* [ ] Simplify page (and maintenance) with HTML5 templates
-* [ ] "send a link" feature with pre-filled numbers
-* [ ] Include the full text of each rule later in the page, linked from where the rule preductions are shown.
-* [ ] GPA Predictor
-  * GPA grade conversions are as follows [from, to, GP]
-```JSON
-        [
-            [ 75, 100, 4.25 ],
-            [ 71, 74, 4.00 ],
-            [ 67, 70, 3.75 ],
-            [ 64, 66, 3.50 ],
-            [ 61, 63, 3.25 ],
-            [ 57, 60, 3.00 ],
-            [ 54, 56, 2.75 ],
-            [ 50, 53, 2.50 ],
-            [ 48, 48, 2.25 ],
-            [ 43, 47, 2.00 ],
-            [ 40, 42, 1.50 ],
-            [ 38, 38, 1.00 ],
-            [ 35, 37, 0.75 ],
-            [ 30, 34, 0.50 ],
-            [ 0, 28 0.00 ]
-        ]
-```
-  * the marks above are after rounding: .5 rounds up, *9 becomes the next 10.
+# Credits
+* It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
+* Props to Dan Harper who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
