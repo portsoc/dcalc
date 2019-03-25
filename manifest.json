@@ -1,0 +1,20 @@
+{
+    "name": "Portsmouth Degree Calculator",
+    "icons": [
+        {
+            "src": "./img/512.png",
+            "type": "image/png",
+            "sizes": "512x512"
+        },
+        {
+            "src": "./img/192.png",
+            "type": "image/png",
+            "sizes": "192x192"
+        }
+    ],
+    "display": "standalone",
+    "start_url": "./index.html",
+    "background_color": "#FFF",
+    "scope": "/",
+    "theme_color": "#00a0ff"
+}
