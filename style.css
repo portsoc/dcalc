@@ -24,14 +24,19 @@ html {
 }
 
 #source {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 10em;
+  overflow: hidden;
+}
+#source a {
   font-weight: bold;
   display: block;
   background: #621360;
   padding: 3em 10em 1ex;
   color: white;
-  position: absolute;
-  right: 0;
-  top: 0;
   transform: translateX(50%) rotate(45deg);
   transform-origin: top center;
   text-decoration: none;
