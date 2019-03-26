@@ -41,6 +41,7 @@ input {
   color: var(--fg);
   padding: 0.5ex 1ex;
   border: var(--fg) solid 1px;
+  font-family: "Aero", "Calibri", sans-serif;
 }
 
 input::selection {
@@ -52,6 +53,7 @@ input[type='number'] {
   -moz-appearance: textfield;
   text-align: right;
   font-size: var(--numsize);
+  width: 4ch;
 }
 
 input::-webkit-outer-spin-button,
@@ -88,7 +90,7 @@ input:focus {
 
 @media screen and (min-width: 30rem) {
   main, header {
-    width: 30rem;
+    max-width: 30em;
     position: relative;
     margin: 0 auto;
   }
@@ -96,7 +98,7 @@ input:focus {
 
 @media screen and (min-width: 70rem) {
   main, header {
-    width: 70rem;
+    max-width: 70rem;
     position: relative;
     margin: 0 auto;
   }
