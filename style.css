@@ -24,16 +24,16 @@ html {
 }
 
 #source {
-  font-family: "Aero", "Calibri", sans-serif;
   font-weight: bold;
-  display: inline-block;
+  display: block;
   background: #621360;
-  padding: 4em 10em 1ex;
+  padding: 4ex 10em 1ex;
   color: white;
   position: absolute;
-  right: -23ex;
-  top: -5ex;
-  transform: rotate(45deg);
+  right: 0;
+  top: 0;
+  transform: translateX(50%) rotate(45deg);
+  transform-origin: top center;
   text-decoration: none;
 }
 
@@ -64,4 +64,3 @@ html {
     width: auto;
   }
 }
-
