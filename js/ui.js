@@ -30,7 +30,14 @@ function loadSavedMarks() {
 
 function recalculate() {
   const marks = gatherMarksFromPage();
-  if (!marks) return;
+  if (!marks) {
+
+    document.querySelector('#ruleA').textContent = 'n/a';
+    document.querySelector('#ruleB').textContent = 'n/a';
+    document.querySelector('#ruleC').textContent = 'n/a';
+    document.querySelector('#finalClassification').textContent = 'not enough data';
+    return;
+  }
 
   prepareMarks(marks);
 
