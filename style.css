@@ -1,5 +1,14 @@
+:root {
+  --numsize: 120%;
+  --bg: #FFF;
+  --fg: #111;
+  --hibg: #0076A6;
+  --hifg: #000;
+}
 html {
   font-family: "Aero", "Calibri", sans-serif;
+  background: var(--bg);
+  color: var(--fg);
 }
 
 .module {
@@ -13,6 +22,61 @@ html {
   flex-grow: 1;
   margin-right: .5rem;
   font-size: 1rem;
+}
+
+.module span {
+  padding: 0.5ex 1ex;  
+}
+
+
+input {
+  background: var(--bg);
+  color: var(--fg);
+  padding: 0.5ex 1ex;
+  border: var(--fg) solid 1px;
+}
+
+input::selection {
+  background: var(--hibg);
+  color: white;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
+  text-align: right;
+  font-size: var(--numsize);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+input:focus {
+  outline: 0.25rem var(--hibg) solid;
+}
+
+#rules {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+
+#finalClassification,
+#rules span {
+  color: var(--hibg);
+  font-weight: bold;
+}
+
+#results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+#results * {
+  margin: 0.2rem;
 }
 
 @media screen and (min-width: 30rem) {
@@ -46,7 +110,12 @@ html {
     width: 30rem;
   }
 
-  section.results {
-    width: auto;
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --fg: #777;
+    --hifg: #40B;
+    --hibg: #CCC;
   }
 }
