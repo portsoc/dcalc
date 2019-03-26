@@ -18,6 +18,13 @@ html {
   margin-bottom: .5rem;
 }
 
+.module:after {
+  content: '%';
+  padding-left: 1ch;
+  font-size: var(--numsize);
+  align-self: center;
+}
+
 .module :first-child {
   flex-grow: 1;
   margin-right: .5rem;
@@ -25,7 +32,7 @@ html {
 }
 
 .module span {
-  padding: 0.5ex 1ex;  
+  padding: 0.5ex 1ex;
 }
 
 
