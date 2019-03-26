@@ -113,6 +113,7 @@ input:focus {
   #results {
     width: 100%;
   }
+}
 
 @media (prefers-color-scheme: dark) {
   :root {
