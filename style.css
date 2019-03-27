@@ -44,6 +44,10 @@ input {
   font-family: "Aero", "Calibri", sans-serif;
 }
 
+input[disabled] {
+  border: none;
+}
+
 input::selection {
   background: var(--hibg);
   color: white;
@@ -82,11 +86,22 @@ input:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 #results * {
   margin: 0.2rem;
 }
+
+#copyzone {
+  display: flex;
+}
+
+#copyzone input {
+  flex-grow: 1;
+  margin-right: 1ch;
+}
+
 
 @media screen and (min-width: 30rem) {
   main, header {
@@ -113,6 +128,17 @@ input:focus {
   transform: translateX(50%) rotate(45deg);
   transform-origin: top center;
   text-decoration: none;
+}
+
+#share {
+  display: flex;
+  flex-direction: column;
+}
+#share p { margin-top: 0; }
+#share input { font-size: 1rem; }
+#showingShared {
+  flex: 0 0 100%;
+  text-align: center;
 }
 
 @media screen and (min-width: 70rem) {
