@@ -41,6 +41,9 @@ function recalculate() {
 
   prepareMarks(marks);
 
+  console.log(marks);
+  
+
   const a = ruleA(marks);
   const b = ruleB(marks);
   const c = ruleC(marks);
@@ -54,8 +57,8 @@ function recalculate() {
 
   document.querySelector('#finalClassification').textContent = finalClassification;
 
-  // todo call the rules
-  // stick their results in the page
+  document.querySelector('#gpa').textContent = gpa(marks);
+
 }
 
 function gatherMarksFromPage() {
