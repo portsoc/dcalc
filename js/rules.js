@@ -23,13 +23,31 @@ marks are an object like this:
 
 */
 
+const gpaZones =   [
+  [ 75, 100, 4.25 ],
+  [ 71, 74, 4.00 ],
+  [ 67, 70, 3.75 ],
+  [ 64, 66, 3.50 ],
+  [ 61, 63, 3.25 ],
+  [ 57, 60, 3.00 ],
+  [ 54, 56, 2.75 ],
+  [ 50, 53, 2.50 ],
+  [ 48, 48, 2.25 ],
+  [ 43, 47, 2.00 ],
+  [ 40, 42, 1.50 ],
+  [ 38, 38, 1.00 ],
+  [ 35, 37, 0.75 ],
+  [ 30, 34, 0.50 ],
+  [ 0, 28, 0.00 ]
+];
+
 function prepareMarks(marks) {
   marks.prepared = {};
 
   marks.prepared.l5 = marks.l5.slice();
   marks.prepared.l5.sort(reverseNumericalComparison);
   marks.prepared.l5.length = 5;
-
+  
   marks.prepared.l6 = marks.l6.slice();
   marks.prepared.l6.sort(reverseNumericalComparison);
   marks.prepared.l6.length = 3;
@@ -37,12 +55,30 @@ function prepareMarks(marks) {
   marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.sort(reverseNumericalComparison);
+
+  // add GPA 
+  marks.prepared.l5gpa = marks.prepared.l5.map(gradeToGPA);
+  marks.prepared.l6gpa = marks.prepared.l6.map(gradeToGPA);
 }
 
 function reverseNumericalComparison(a, b) {
   return b-a;
 }
 
+function gradeToGPA(num) {
+  num = Math.round(num); // round up from .5
+  num = (num % 10 == 9 ? num+1 : num); // round nines up
+  for (const zone of gpaZones) {
+    if (num >= zone[0] && num <= zone[1]) return zone[2];
+  }
+  return -999;
+}
+
+function gpa(marks) {
+  const weightedl5mean = rawmean(marks.prepared.l5gpa) * 0.4;
+  const weightedl6mean = rawmean(marks.prepared.l6gpa) * 0.6;
+  return Number( weightedl5mean + weightedl6mean ).toFixed(2);
+}
 
 function ruleA(marks) {
   const l5mean = mean(marks.prepared.l5);
@@ -60,13 +96,12 @@ function ruleC(marks) {
   return Math.round(allMarks[allMarks.length / 2]);
 }
 
+function rawmean(array) {
+  return array.reduce( (a,b) => a+b ) / array.length;
+}
+
 function mean(array) {
-  let sum = 0;
-  for (const num of array) {
-    sum += num;
-  }
-  const mean = sum/array.length;
-  return Math.round(mean);
+  return Math.round(rawmean(array));
 }
 
 function toClassification(mark) {
