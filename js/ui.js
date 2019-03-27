@@ -1,17 +1,62 @@
 function init() {
+  const query = parseQueryParams();
+
   const inputs = document.querySelectorAll('input[type="number"]');
   for (const input of inputs) {
     input.addEventListener('input', recalculate);
   }
 
-  const allInputs = document.querySelectorAll('input');
+  const allInputs = document.querySelectorAll('.module input');
   for (const input of allInputs) {
-    input.addEventListener('input', save);
+    input.addEventListener('input', createShareLink);
   }
 
-  loadSavedMarks();
+  const shareLinkEl = document.querySelector('#shareLink');
+  shareLinkEl.addEventListener('click', (e) => e.target.select());
+  shareLinkEl.addEventListener('input', preventShareLinkChanges);
+
+  if (query.share) {
+    // we are using shared marks, disabling local storage usage and mark editing
+    loadSharedMarks(query);
+    document.querySelector('#showingShared').style='';
+    document.querySelector('#share').style='display: none';
+    document.querySelector('#showingShared a').href = window.location.origin + window.location.pathname;
+  } else {
+    loadSavedMarks();
+    createShareLink(); // must be done after loading saved marks
+    for (const input of allInputs) {
+      input.addEventListener('input', save);
+    }
+  }
 
   recalculate();
+}
+
+function preventShareLinkChanges(e) {
+  createShareLink();
+  e.target.select();
+}
+
+function createShareLink() {
+  let link = window.location.origin + window.location.pathname + '?share';
+  const allInputs = document.querySelectorAll('.module input');
+  for (const input of allInputs) {
+    if (input.value) {
+      link += `&${encodeURIComponent(input.id)}=${encodeURIComponent(input.value)}`;
+    }
+  }
+
+  document.querySelector('#shareLink').value = link;
+}
+
+function loadSharedMarks(query) {
+  const allInputs = document.querySelectorAll('.module input');
+  for (const input of allInputs) {
+    input.disabled = true;
+    if (input.id in query) {
+      input.value = query[input.id][0];
+    }
+  }
 }
 
 function save(e) {
@@ -40,9 +85,6 @@ function recalculate() {
   }
 
   prepareMarks(marks);
-
-  console.log(marks);
-  
 
   const a = ruleA(marks);
   const b = ruleB(marks);
@@ -102,6 +144,28 @@ function gatherMarksFromPage() {
   retval.fyp = Number(fypInput.value);
 
   return retval;
+}
+
+// query parsing functions, adapted from stackoverflow
+function parseQueryParams() {
+  const search = location.search.substring(1).replace(/\+/g, ' ');
+
+  /* parse the query */
+  const params = search.replace(/;/g, '&').split('&');
+  let q = {};
+  for (let i=0; i<params.length; i++) {
+    const t = params[i].split('=', 2);
+    const name = decodeURIComponent(t[0]);
+    if (!q[name]) {
+      q[name] = [];
+    }
+    if (t.length > 1) {
+      q[name].push(decodeURIComponent(t[1]));
+    } else {
+      q[name].push(true);
+    }
+  }
+  return q;
 }
 
 window.addEventListener('load', init);
