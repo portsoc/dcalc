@@ -96,6 +96,25 @@ input:focus {
   }
 }
 
+#source {
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 10em;
+  overflow: hidden;
+}
+#source a {
+  font-weight: bold;
+  display: block;
+  background: #621360;
+  padding: 3em 10em 1ex;
+  color: white;
+  transform: translateX(50%) rotate(45deg);
+  transform-origin: top center;
+  text-decoration: none;
+}
+
 @media screen and (min-width: 70rem) {
   main, header {
     max-width: 70rem;
