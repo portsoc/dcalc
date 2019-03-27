@@ -9,6 +9,12 @@ html {
   margin-bottom: .5rem;
 }
 
+.module:after {
+  content: '%';
+  padding-left: 1ch;
+  align-self: center;
+}
+
 .module :first-child {
   flex-grow: 1;
   margin-right: .5rem;
