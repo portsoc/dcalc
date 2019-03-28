@@ -82,6 +82,7 @@ input:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 #results * {
@@ -113,6 +114,17 @@ input:focus {
   transform: translateX(50%) rotate(45deg);
   transform-origin: top center;
   text-decoration: none;
+}
+
+#share {
+  display: flex;
+  flex-direction: column;
+}
+#share p { margin-top: 0; }
+#share input { font-size: 1rem; }
+#showingShared {
+  flex: 0 0 100%;
+  text-align: center;
 }
 
 @media screen and (min-width: 70rem) {
