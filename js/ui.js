@@ -13,8 +13,7 @@ function init() {
 
   const shareLinkEl = document.querySelector('#shareLink');
   shareLinkEl.addEventListener('click', (e) => e.target.select());
-  shareLinkEl.addEventListener('input', preventShareLinkChanges);
-
+  
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
@@ -30,11 +29,8 @@ function init() {
   }
 
   recalculate();
-}
 
-function preventShareLinkChanges(e) {
-  createShareLink();
-  e.target.select();
+  document.getElementById('copy').addEventListener('click', copyToClipboard);
 }
 
 function createShareLink() {
@@ -166,6 +162,13 @@ function parseQueryParams() {
     }
   }
   return q;
+}
+
+function copyToClipboard () {
+  const sl = document.querySelector("#shareLink");
+  sl.select();
+  document.execCommand('copy');
+  sl.blur();
 }
 
 window.addEventListener('load', init);

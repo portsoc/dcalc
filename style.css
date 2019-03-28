@@ -44,6 +44,10 @@ input {
   font-family: "Aero", "Calibri", sans-serif;
 }
 
+input[disabled] {
+  border: none;
+}
+
 input::selection {
   background: var(--hibg);
   color: white;
@@ -88,6 +92,16 @@ input:focus {
 #results * {
   margin: 0.2rem;
 }
+
+#copyzone {
+  display: flex;
+}
+
+#copyzone input {
+  flex-grow: 1;
+  margin-right: 1ch;
+}
+
 
 @media screen and (min-width: 30rem) {
   main, header {
