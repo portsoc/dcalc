@@ -18,17 +18,14 @@ html {
   margin-bottom: .5rem;
 }
 
-.module:after {
-  content: '%';
-  padding-left: 1ch;
-  font-size: var(--numsize);
-  align-self: center;
+.module>* {
+  flex-grow: 1;
 }
 
+
 .module :first-child {
-  flex-grow: 1;
+  flex-grow: 0;
   margin-right: .5rem;
-  font-size: 1rem;
 }
 
 .module span {
@@ -42,6 +39,7 @@ input {
   padding: 0.5ex 1ex;
   border: var(--fg) solid 1px;
   font-family: "Aero", "Calibri", sans-serif;
+  font-size: 1rem;
 }
 
 input[disabled] {
