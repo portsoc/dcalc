@@ -5,6 +5,7 @@
   --hibg: #0076A6;
   --hifg: #000;
 }
+
 html {
   font-family: "Aero", "Calibri", sans-serif;
   background: var(--bg);
@@ -46,6 +47,11 @@ input[disabled] {
   border: none;
 }
 
+input:valid {
+  border: none;
+
+}
+
 input::selection {
   background: var(--hibg);
   color: white;
@@ -56,6 +62,11 @@ input[type='number'] {
   text-align: right;
   font-size: var(--numsize);
   width: 4ch;
+}
+
+input[type='text'][value=''] {
+  border: none;
+  background: red;
 }
 
 input::-webkit-outer-spin-button,
@@ -75,6 +86,7 @@ input:focus {
 
 
 #finalClassification,
+#gpa,
 #rules span {
   color: var(--hibg);
   font-weight: bold;
