@@ -2,11 +2,13 @@
     "name": "Portsmouth Degree Calculator",
     "icons": [
         {
+            "purpose": "maskable",
             "src": "./img/512.png",
             "type": "image/png",
             "sizes": "512x512"
         },
         {
+            "purpose": "maskable",
             "src": "./img/192.png",
             "type": "image/png",
             "sizes": "192x192"
