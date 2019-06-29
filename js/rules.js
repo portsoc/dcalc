@@ -97,7 +97,7 @@ function ruleC(marks) {
 }
 
 function rawmean(array) {
-  return array.reduce( (a,b) => a+b ) / array.length;
+  return array.reduce((a,b) => a + b, 0) / Math.max(array.length, 1);
 }
 
 function mean(array) {
@@ -112,7 +112,17 @@ function toClassification(mark) {
   return 'First-class honours';
 }
 
-
+module.exports = {
+  prepareMarks: prepareMarks,
+  gradeToGPA: gradeToGPA,
+  gpa: gpa,
+  ruleA: ruleA,
+  ruleB: ruleB,
+  ruleC: ruleC,
+  rawmean: rawmean,
+  mean: mean,
+  toClassification: toClassification,
+}
 
 /* for testing
 
