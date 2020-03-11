@@ -5,6 +5,17 @@
   --hibg: #0076A6;
   --hifg: #000;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --fg: #BBB;
+    --hifg: #40B;
+    --hibg: #DDD;
+  }
+}
+
+
 html {
   font-family: "Aero", "Calibri", sans-serif;
   background: var(--bg);
@@ -164,14 +175,5 @@ input:focus {
 
   #results {
     width: 100%;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000;
-    --fg: #BBB;
-    --hifg: #40B;
-    --hibg: #DDD;
   }
 }
