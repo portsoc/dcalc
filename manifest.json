@@ -1,5 +1,6 @@
 {
     "name": "Portsmouth Degree Calculator",
+    "short_name": "Portsmouth Degree Calculator",
     "icons": [
         {
             "purpose": "maskable",
@@ -8,7 +9,7 @@
             "sizes": "512x512"
         },
         {
-            "purpose": "maskable",
+            "purpose": "any maskable",
             "src": "./img/192.png",
             "type": "image/png",
             "sizes": "192x192"
@@ -18,5 +19,5 @@
     "start_url": "./index.html",
     "background_color": "#FFF",
     "scope": "/",
-    "theme_color": "#00a0ff"
+    "theme_color": "#621360"
 }
