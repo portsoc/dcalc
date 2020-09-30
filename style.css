@@ -7,6 +7,17 @@
   --border-disabled: #aaa;
 }
 
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --fg: #777;
+    --hibg: #CCC;
+    --border: #888;
+    --border-disabled: #444;
+  }
+}
+
+
 html {
   font-family: "Aero", "Calibri", sans-serif;
   background: var(--bg);
@@ -174,12 +185,3 @@ input:focus {
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000;
-    --fg: #777;
-    --hibg: #CCC;
-    --border: #888;
-    --border-disabled: #444;
-  }
-}
