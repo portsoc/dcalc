@@ -56,8 +56,10 @@ function loadSharedMarks(query) {
 }
 
 function save(e) {
-  const input = e.target;
-  localStorage[input.id] = input.value;
+  if (e.target.validity.valid) {
+    const input = e.target;
+    localStorage[input.id] = input.value;  
+  } 
 }
 
 function loadSavedMarks() {
