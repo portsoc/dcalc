@@ -1,9 +1,10 @@
 :root {
   --numsize: 120%;
   --bg: #FFF;
-  --fg: #111;
+  --fg: #000;
   --hibg: #0076A6;
-  --hifg: #000;
+  --border: #888;
+  --border-disabled: #aaa;
 }
 
 html {
@@ -38,18 +39,13 @@ input {
   background: var(--bg);
   color: var(--fg);
   padding: 0.5ex 1ex;
-  border: var(--fg) solid 1px;
+  border: var(--border) solid 1px;
   font-family: "Aero", "Calibri", sans-serif;
   font-size: 1rem;
 }
 
 input[disabled] {
-  border: none;
-}
-
-input:valid {
-  border: none;
-
+  border-color: var(--border-disabled);
 }
 
 input::selection {
@@ -65,7 +61,6 @@ input[type='number'] {
 }
 
 input[type='text'][value=''] {
-  border: none;
   background: red;
 }
 
@@ -183,7 +178,8 @@ input:focus {
   :root {
     --bg: #000;
     --fg: #777;
-    --hifg: #40B;
     --hibg: #CCC;
+    --border: #888;
+    --border-disabled: #444;
   }
 }
