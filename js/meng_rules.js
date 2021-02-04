@@ -97,14 +97,3 @@ function toClassificationMeng(mark) {
   if (mark < 70) return 'with Merit';
   return 'with Distinction';
 }
-
-
-
-/* for testing
-
-const marks = {
-    l5: [45, 56, 67, 78, 89, 90],
-    l6: [56, 67, 78, 89],
-    fyp: 68,
-}
-*/
