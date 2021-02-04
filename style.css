@@ -36,9 +36,16 @@ html {
 }
 
 
-.module :first-child {
+.module :first-child, .module .credits {
   flex-grow: 0;
+}
+
+.module :first-child {
   margin-right: .5rem;
+}
+
+.module .credits {
+  margin-left: .5rem;
 }
 
 .module span {
@@ -90,10 +97,15 @@ input:focus {
   justify-content: space-around;
 }
 
+.hidden {
+  display: none
+}
+
 
 #finalClassification,
 #gpa,
-#rules span {
+#rules span,
+.degree:checked+label {
   color: var(--hibg);
   font-weight: bold;
 }
@@ -184,4 +196,3 @@ input:focus {
     width: 100%;
   }
 }
-
