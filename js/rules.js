@@ -18,7 +18,12 @@ marks are an object like this:
 {
   l5: [ 45, 56, 34, 75, 43, 89 ],
   l6: [ 65, 76, 87, 67 ],
+  l7: {
+    credits15: [],
+    credits30: [],
+  }
   fyp: 73,
+  gip: null,
 }
 
 */
@@ -49,11 +54,11 @@ function prepareMarks(marks) {
   marks.prepared.l5.length = 5;
 
   marks.prepared.l6 = marks.l6.slice();
+  marks.prepared.l6.push(marks.fyp);  // Add fyp once, as if it was worth 20 credits. This way, 20 credits of it can be dropped if the project is lowest
   marks.prepared.l6.sort(reverseNumericalComparison);
-  marks.prepared.l6.length = 3;
+  marks.prepared.l6.length = 4;
 
-  marks.prepared.l6.push(marks.fyp);
-  marks.prepared.l6.push(marks.fyp);
+  marks.prepared.l6.push(marks.fyp);  // Add fyp a second time, to make up the 40 credits
   marks.prepared.l6.sort(reverseNumericalComparison);
 
   // add GPA

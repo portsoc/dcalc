@@ -1,6 +1,11 @@
 function init() {
   const query = parseQueryParams();
 
+  const degreeInputs = document.querySelectorAll('.degree');
+  for (const input of degreeInputs) {
+    input.addEventListener('change', changeDegree);
+  }
+
   const inputs = document.querySelectorAll('input[type="number"]');
   for (const input of inputs) {
     input.addEventListener('input', recalculate);
@@ -31,6 +36,22 @@ function init() {
   recalculate();
 
   document.getElementById('copy').addEventListener('click', copyToClipboard);
+}
+
+function changeDegree(e) {
+  const degree = e.target.id;
+  toggleMeng(degree === "meng")
+}
+
+function toggleMeng(show) {
+  const l7Section = document.getElementById('l7')
+  const l6Year = document.getElementById('l6year')
+  const ruleC = document.getElementById('ruleC')
+  l7Section.className = (show) ? '' : 'hidden'
+  l6Year.textContent = (show) ? 'Third Year' : 'Final Year'
+  ruleC.parentElement.className = (show) ? 'hidden' : ''
+
+  recalculate()
 }
 
 function createShareLink() {
@@ -84,28 +105,34 @@ function recalculate() {
 
   prepareMarks(marks);
 
-  const a = ruleA(marks);
-  const b = ruleB(marks);
-  const c = ruleC(marks);
+  const usingMeng = !document.getElementById('l7').className.includes('hidden')
+
+  const a = (usingMeng) ? ruleAMeng(marks) : ruleA(marks);
+  const b = (usingMeng) ? ruleBMeng(marks) : ruleB(marks);
+  const c = (usingMeng) ? 0 : ruleC(marks); // There is no 'Rule C' for an Integrated Masters
 
   document.querySelector('#ruleA').textContent = a;
   document.querySelector('#ruleB').textContent = b;
   document.querySelector('#ruleC').textContent = c;
 
   const finalMark = Math.max(a,b,c);
-  const finalClassification = toClassification(finalMark);
+  const finalClassification = (usingMeng) ? toClassificationMeng(finalMark) : toClassification(finalMark);
 
   document.querySelector('#finalClassification').textContent = finalClassification;
 
-  document.querySelector('#gpa').textContent = gpa(marks);
-
+  document.querySelector('#gpa').textContent = (usingMeng) ? 'n/a' : gpa(marks);
 }
 
 function gatherMarksFromPage() {
   const retval = {
     l5: [],
     l6: [],
+    l7: {
+      credits30: [],
+      credits15: []
+    },
     fyp: null,
+    gip: null,
   };
 
   const l5Inputs = document.querySelectorAll('#l5 input[type="number"]');
@@ -140,6 +167,42 @@ function gatherMarksFromPage() {
     return null;
   }
   retval.fyp = Number(fypInput.value);
+
+  const l7Inputs = document.querySelectorAll('#l7:not(.hidden) input:not(#gip)[type="number"]');
+  if (l7Inputs.length) {
+    for (const input of l7Inputs) {
+      if (input.value === '') {
+        console.log('no data', input);
+        return null;
+      }
+      if (input.className.includes('credits30')) {
+        retval.l7.credits30.push(Number(input.value));
+      }
+      if (input.className.includes('credits15')) {
+        retval.l7.credits15.push(Number(input.value));
+      }
+    }
+
+    if ((retval.l7.credits15.length + retval.l7.credits30.length) !== 4) {
+      console.error('we do not have enough l7 inputs!');
+    }
+  } else {
+    retval.l7 = {
+      credits15: [],
+      credits30: [],
+    }
+  }  
+
+  const gipInput = document.querySelector('#l7:not(.hidden) #gip');
+  if (gipInput) {
+    if (gipInput.value === '') {
+      console.log('no data', fypInput);
+      return null;
+    }
+    retval.gip = Number(gipInput.value);
+  } else {
+    retval.gip = null;
+  }
 
   return retval;
 }

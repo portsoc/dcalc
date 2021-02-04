@@ -90,10 +90,15 @@ input:focus {
   justify-content: space-around;
 }
 
+.hidden {
+  display: none
+}
+
 
 #finalClassification,
 #gpa,
-#rules span {
+#rules span,
+.degree:checked+label {
   color: var(--hibg);
   font-weight: bold;
 }
@@ -184,4 +189,3 @@ input:focus {
     width: 100%;
   }
 }
-
