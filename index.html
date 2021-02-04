@@ -19,6 +19,11 @@
 
   <section id="results">
     <div>
+      <h2>Degree:</h2>
+      <input class="degree" id="meng" type="radio" tabindex="1" name="degree" value="meng"><label for="meng">MEng</label>
+      <input class="degree" id="bsc" type="radio" tabindex="2" name="degree" value="bsc" checked><label for="bsc">BSc</label>
+    </div>
+    <div>
       <h2>Indication:</h2>
       <p id="finalClassification">not enough data</span>.</p>
     </div>
@@ -40,53 +45,77 @@
   <section id="l5">
     <h2>Second Year</h2>
     <div class="module">
-      <input id="l5mark1" type="number" min="0" max="100" tabindex="1" placeholder="0" autofocus>
-      <input id="l5name1" type="text" tabindex="21" placeholder="module 1 name">
+      <input id="l5mark1" type="number" min="0" max="100" tabindex="3" placeholder="0" autofocus>
+      <input id="l5name1" type="text" tabindex="4" placeholder="module 1 name">
     </div>
     <div class="module">
-      <input id="l5mark2" type="number" min="0" max="100" tabindex="2" placeholder="0">
-      <input id="l5name2" type="text" tabindex="22" placeholder="module 2 name">
+      <input id="l5mark2" type="number" min="0" max="100" tabindex="5" placeholder="0">
+      <input id="l5name2" type="text" tabindex="6" placeholder="module 2 name">
     </div>
     <div class="module">
-      <input id="l5mark3" type="number" min="0" max="100" tabindex="3" placeholder="0">
-      <input id="l5name3" type="text" tabindex="23" placeholder="module 3 name">
+      <input id="l5mark3" type="number" min="0" max="100" tabindex="7" placeholder="0">
+      <input id="l5name3" type="text" tabindex="8" placeholder="module 3 name">
     </div>
     <div class="module">
-      <input id="l5mark4" type="number" min="0" max="100" tabindex="4" placeholder="0">
-      <input id="l5name4" type="text" tabindex="24" placeholder="module 4 name">
+      <input id="l5mark4" type="number" min="0" max="100" tabindex="9" placeholder="0">
+      <input id="l5name4" type="text" tabindex="10" placeholder="module 4 name">
     </div>
     <div class="module">
-      <input id="l5mark5" type="number" min="0" max="100" tabindex="5" placeholder="0">
-      <input id="l5name5" type="text" tabindex="25" placeholder="module 5 name">
+      <input id="l5mark5" type="number" min="0" max="100" tabindex="11" placeholder="0">
+      <input id="l5name5" type="text" tabindex="12" placeholder="module 5 name">
     </div>
     <div class="module">
-      <input id="l5mark6" type="number" min="0" max="100" tabindex="6" placeholder="0">
-      <input id="l5name6" type="text" tabindex="26" placeholder="module 6 name">
+      <input id="l5mark6" type="number" min="0" max="100" tabindex="13" placeholder="0">
+      <input id="l5name6" type="text" tabindex="14" placeholder="module 6 name">
     </div>
   </section>
 
 
   <section id="l6">
+    <h2 id="l6year">Final Year</h2>
+    <div class="module">
+      <input id="l6mark1" type="number" tabindex="15" min="0" max="100" placeholder="0">
+      <input id="l6name1" type="text" tabindex="16" placeholder="module name">
+    </div>
+    <div class="module">
+      <input id="l6mark2" type="number" tabindex="17" min="0" max="100" placeholder="0">
+      <input id="l6name2" type="text" tabindex="18" placeholder="module name">
+    </div>
+    <div class="module">
+      <input id="l6mark3" type="number" tabindex="19" min="0" max="100" placeholder="0">
+      <input id="l6name3" type="text" tabindex="20" placeholder="module name">
+    </div>
+    <div class="module">
+      <input id="l6mark4" type="number" tabindex="21" min="0" max="100" placeholder="0">
+      <input id="l6name4" type="text" tabindex="22" placeholder="module name">
+    </div>
+    <div class="module">
+      <input id="fyp" type="number" tabindex="23" min=0 max=100 placeholder="0">
+      <span>Project</span>
+    </div>
+  </section>
+
+  <section id="l7" class="hidden">
     <h2>Final Year</h2>
     <div class="module">
-      <input id="l6mark1" type="number" tabindex="7" min="0" max="100" placeholder="0">
-      <input id="l6name1" type="text" tabindex="27" placeholder="module name">
+      <input id="l7mark1" class="credits30" type="number" tabindex="24" min="0" max="100" placeholder="0">
+      <input id="l7name1" type="text" tabindex="25" placeholder="30 credit module name">
     </div>
     <div class="module">
-      <input id="l6mark2" type="number" tabindex="8" min="0" max="100" placeholder="0">
-      <input id="l6name2" type="text" tabindex="28" placeholder="module name">
+      <input id="l7mark2" class="credits30" type="number" tabindex="26" min="0" max="100" placeholder="0">
+      <input id="l7name2" type="text" tabindex="27" placeholder="30 credit module name">
     </div>
     <div class="module">
-      <input id="l6mark3" type="number" tabindex="9" min="0" max="100" placeholder="0">
-      <input id="l6name3" type="text" tabindex="29" placeholder="module name">
+      <input id="l7mark3" class="credits15" type="number" tabindex="28" min="0" max="100" placeholder="0">
+      <input id="l7name3" type="text" tabindex="29" placeholder="15 credit module name">
     </div>
     <div class="module">
-      <input id="l6mark4" type="number" tabindex="10" min="0" max="100" placeholder="0">
-      <input id="l6name4" type="text" tabindex="30" placeholder="module name">
+      <input id="l7mark4" class="credits15" type="number" tabindex="30" min="0" max="100" placeholder="0">
+      <input id="l7name4" type="text" tabindex="31" placeholder="15 credit module name">
     </div>
     <div class="module">
-      <input id="fyp" type="number" tabindex="11" min=0 max=100 placeholder="0">
-      <span>Project</span>
+      <input id="gip" type="number" tabindex="32" min=0 max=100 placeholder="0">
+      <span>Group Industrial Project</span>
     </div>
   </section>
 
@@ -104,5 +133,6 @@
 
 <script src="app.js"></script>
 <script src="js/rules.js"></script>
+<script src="js/meng_rules.js"></script>
 <script src="js/ui.js"></script>
 <script src="js/validity.js"></script>
