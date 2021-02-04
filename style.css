@@ -36,16 +36,9 @@ html {
 }
 
 
-.module :first-child, .module .credits {
-  flex-grow: 0;
-}
-
 .module :first-child {
+  flex-grow: 0;
   margin-right: .5rem;
-}
-
-.module .credits {
-  margin-left: .5rem;
 }
 
 .module span {
