@@ -18,7 +18,12 @@ marks are an object like this:
 {
   l5: [ 45, 56, 34, 75, 43, 89 ],
   l6: [ 65, 76, 87, 67 ],
+  l7: {
+    credits15: [],
+    credits30: [],
+  }
   fyp: 73,
+  gip: null,
 }
 
 */
