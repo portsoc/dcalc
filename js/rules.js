@@ -75,36 +75,33 @@ function gradeToGPA(num) {
 }
 
 function gpa(marks) {
-  const weightedl5mean = mean(marks.prepared.l5gpa) * 0.4;
-  const weightedl6mean = mean(marks.prepared.l6gpa) * 0.6;
+  const weightedl5mean = rawmean(marks.prepared.l5gpa) * 0.4;
+  const weightedl6mean = rawmean(marks.prepared.l6gpa) * 0.6;
   return Number( weightedl5mean + weightedl6mean ).toFixed(2);
 }
 
 function ruleA(marks) {
   const l5mean = mean(marks.prepared.l5);
   const l6mean = mean(marks.prepared.l6);
-  return roundDown(l5mean * 0.4 + l6mean * 0.6);
+  return Math.round(l5mean * 0.4 + l6mean * 0.6);
 }
 
 function ruleB(marks) {
-  return roundDown(mean(marks.prepared.l6));
+  return mean(marks.prepared.l6);
 }
 
 function ruleC(marks) {
   const allMarks = marks.prepared.l5.concat(marks.prepared.l6);
   allMarks.sort(reverseNumericalComparison);
-  return roundDown(allMarks[allMarks.length / 2]);
+  return Math.round(allMarks[allMarks.length / 2]);
 }
 
-function mean(array) {
+function rawmean(array) {
   return array.reduce( (a,b) => a+b ) / array.length;
 }
 
-function roundDown(num, digits = 2) {
-  const str = String(num);
-  const [whole, decimal] = str.split('.');
-  const padded = (decimal || '00').padEnd(digits, '0');
-  return whole + '.' + padded.substring(0, 2);
+function mean(array) {
+  return Math.round(rawmean(array));
 }
 
 function toClassification(mark) {
