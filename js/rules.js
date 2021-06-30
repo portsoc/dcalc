@@ -13,6 +13,8 @@ a) l5mean * 0.4 + l6mean * 0.6
 b) l6mean
 c) just past the middle
 
+source: https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf
+
 marks are an object like this:
 
 {

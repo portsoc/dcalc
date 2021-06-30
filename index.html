@@ -21,15 +21,16 @@
     <div>
       <h2>Indication:</h2>
       <p id="finalClassification">not enough data</span>.</p>
-    </div>
-    <div>
-      <h2>GPA:</h2>
-      <p id="gpa">not enough data</span>.</p>
+      <p>This is the best result from Rules A, B and C.</p>
     </div>
     <div id=rules>
       <p>Rule A: <span id="ruleA">n/a</span></p>
       <p>Rule B: <span id="ruleB">n/a</span></p>
       <p>Rule C: <span id="ruleC">n/a</span></p>
+    </div>
+    <div>
+      <h2>GPA:</h2>
+      <p id="gpa">not enough data</span>.</p>
     </div>
   </section>
 
@@ -98,6 +99,20 @@
       <input id="shareLink" type="text" tabindex="40" readonly>
       <button id="copy" tabindex="41">Copy</button>
     </div>
+  </section>
+
+  <section id="rule-explanation">
+    <h2>Rule Definitions</h2>
+    <p>Source: <a href="https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf">Examination & Assessment Regulations: Boards of Examiners</a></p>
+    <dl>
+      <dt>Rule A
+      <dd>The classification of the weighted mean of all relevant credits at Level 5 and all relevant credits at Level 6 in the ratio of 40:60 respectively after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
+      <dt>Rule B
+      <dd>The classification of the weighted mean of all relevant credits at Level 6 after first discounting the marks in the worst 20 credits at Level 6.
+      <dt>Rule C
+      <dd>The minimum classification in which more than 50% of the combined relevant credits at Level 5 and Level 6 were attained after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
+    </dl>
+    <p>Per point 3.2 of the regulations, weighted mean averages are rounded to integers for the purpose of the above rules.
   </section>
 
 </main>
