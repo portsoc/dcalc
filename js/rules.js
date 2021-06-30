@@ -75,19 +75,20 @@ function gradeToGPA(num) {
 }
 
 function gpa(marks) {
-  const weightedl5mean = rawMean(marks.prepared.l5gpa) * 0.4;
-  const weightedl6mean = rawMean(marks.prepared.l6gpa) * 0.6;
+  const weightedl5mean = mean(marks.prepared.l5gpa) * 0.4;
+  const weightedl6mean = mean(marks.prepared.l6gpa) * 0.6;
   return Number( weightedl5mean + weightedl6mean ).toFixed(2);
 }
 
 function ruleA(marks) {
-  const l5mean = roundedMean(marks.prepared.l5);
-  const l6mean = roundedMean(marks.prepared.l6);
+  const l5mean = mean(marks.prepared.l5);
+  const l6mean = mean(marks.prepared.l6);
   return Math.round(l5mean * 0.4 + l6mean * 0.6);
 }
 
 function ruleB(marks) {
-  return roundedMean(marks.prepared.l6);
+  const l6mean = mean(marks.prepared.l6);
+  return Math.round(l6mean);
 }
 
 function ruleC(marks) {
@@ -96,12 +97,8 @@ function ruleC(marks) {
   return Math.round(allMarks[allMarks.length / 2]);
 }
 
-function rawMean(array) {
+function mean(array) {
   return array.reduce( (a,b) => a+b ) / array.length;
-}
-
-function roundedMean(array) {
-  return Math.round(rawMean(array));
 }
 
 function toClassification(mark) {
