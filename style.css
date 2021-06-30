@@ -1,10 +1,25 @@
 :root {
   --numsize: 120%;
   --bg: #FFF;
-  --fg: #111;
+  --fg: #000;
   --hibg: #0076A6;
-  --hifg: #000;
+  --highlight: #ffa;
+  --border: #888;
+  --border-disabled: #aaa;
 }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #000;
+    --fg: #777;
+    --hibg: #CCC;
+    --highlight: #336;
+    --border: #888;
+    --border-disabled: #444;
+  }
+}
+
+
 html {
   font-family: "Aero", "Calibri", sans-serif;
   background: var(--bg);
@@ -37,13 +52,13 @@ input {
   background: var(--bg);
   color: var(--fg);
   padding: 0.5ex 1ex;
-  border: var(--fg) solid 1px;
+  border: var(--border) solid 1px;
   font-family: "Aero", "Calibri", sans-serif;
   font-size: 1rem;
 }
 
 input[disabled] {
-  border: none;
+  border-color: var(--border-disabled);
 }
 
 input::selection {
@@ -56,6 +71,10 @@ input[type='number'] {
   text-align: right;
   font-size: var(--numsize);
   width: 4ch;
+}
+
+input[type='text'][value=''] {
+  background: red;
 }
 
 input::-webkit-outer-spin-button,
@@ -75,6 +94,7 @@ input:focus {
 
 
 #finalClassification,
+#gpa,
 #rules span {
   color: var(--hibg);
   font-weight: bold;
@@ -139,6 +159,11 @@ input:focus {
   text-align: center;
 }
 
+[data-highlight]:hover,
+.highlight {
+  background-color: var(--highlight);
+}
+
 @media screen and (min-width: 70rem) {
   main, header {
     max-width: 70rem;
@@ -164,14 +189,5 @@ input:focus {
 
   #results {
     width: 100%;
-  }
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg: #000;
-    --fg: #777;
-    --hifg: #40B;
-    --hibg: #CCC;
   }
 }

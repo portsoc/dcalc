@@ -31,6 +31,8 @@ function init() {
   recalculate();
 
   document.getElementById('copy').addEventListener('click', copyToClipboard);
+
+  setupHighlighting();
 }
 
 function createShareLink() {
@@ -56,8 +58,10 @@ function loadSharedMarks(query) {
 }
 
 function save(e) {
-  const input = e.target;
-  localStorage[input.id] = input.value;
+  if (e.target.validity.valid) {
+    const input = e.target;
+    localStorage[input.id] = input.value;  
+  } 
 }
 
 function loadSavedMarks() {
@@ -169,6 +173,22 @@ function copyToClipboard () {
   sl.select();
   document.execCommand('copy');
   sl.blur();
+}
+
+function setupHighlighting() {
+  const triggers = document.querySelectorAll('[data-highlight]');
+  for (const trigger of triggers) {
+    trigger.addEventListener('mouseenter', () => highlight(trigger, true));
+    trigger.addEventListener('mouseleave', () => highlight(trigger, false));
+    console.log(trigger);
+  }
+}
+
+function highlight(trigger, showHighlight) {
+  const targets = document.querySelectorAll(trigger.dataset.highlight);
+  for (const target of targets) {
+    target.classList.toggle('highlight', showHighlight);
+  }
 }
 
 window.addEventListener('load', init);

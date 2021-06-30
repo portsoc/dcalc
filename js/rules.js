@@ -13,6 +13,8 @@ a) l5mean * 0.4 + l6mean * 0.6
 b) l6mean
 c) just past the middle
 
+source: https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf
+
 marks are an object like this:
 
 {
@@ -75,8 +77,8 @@ function gradeToGPA(num) {
 }
 
 function gpa(marks) {
-  const weightedl5mean = rawmean(marks.prepared.l5gpa) * 0.4;
-  const weightedl6mean = rawmean(marks.prepared.l6gpa) * 0.6;
+  const weightedl5mean = mean(marks.prepared.l5gpa) * 0.4;
+  const weightedl6mean = mean(marks.prepared.l6gpa) * 0.6;
   return Number( weightedl5mean + weightedl6mean ).toFixed(2);
 }
 
@@ -87,7 +89,8 @@ function ruleA(marks) {
 }
 
 function ruleB(marks) {
-  return mean(marks.prepared.l6);
+  const l6mean = mean(marks.prepared.l6);
+  return Math.round(l6mean);
 }
 
 function ruleC(marks) {
@@ -96,12 +99,8 @@ function ruleC(marks) {
   return Math.round(allMarks[allMarks.length / 2]);
 }
 
-function rawmean(array) {
-  return array.reduce((a,b) => a + b, 0) / Math.max(array.length, 1);
-}
-
 function mean(array) {
-  return Math.round(rawmean(array));
+  return array.reduce( (a,b) => a+b ) / array.length;
 }
 
 function toClassification(mark) {
