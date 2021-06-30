@@ -21,144 +21,47 @@ describe('rules', () => {
 	})
 
 	describe('.gradeToGPA', () => {
-		it('should round .9 up', () => {
-			expect(rules.gradeToGPA(59.9)).toEqual(3)
-		})
-
-		it('should round .5 up', () => {
-			expect(rules.gradeToGPA(59.5)).toEqual(3)
-		})
-
-		it('should round .49 down', () => {
-			expect(rules.gradeToGPA(56.49)).toEqual(2.75)
-		})
-
-		it('should round 9s up', () => {
-			expect(rules.gradeToGPA(49)).toEqual(2.5)
-		})
-
-		it('should return correct grade for 100', () => {
-			expect(rules.gradeToGPA(100)).toEqual(4.25)
-		})
-
-		it('should return correct grade for 75', () => {
-			expect(rules.gradeToGPA(75)).toEqual(4.25)
-		})
-
-		it('should return correct grade for 74', () => {
-			expect(rules.gradeToGPA(74)).toEqual(4)
-		})
-
-		it('should return correct grade for 71', () => {
-			expect(rules.gradeToGPA(71)).toEqual(4)
-		})
-
-		it('should return correct grade for 70', () => {
-			expect(rules.gradeToGPA(70)).toEqual(3.75)
-		})
-
-		it('should return correct grade for 67', () => {
-			expect(rules.gradeToGPA(67)).toEqual(3.75)
-		})
-
-		it('should return correct grade for 66', () => {
-			expect(rules.gradeToGPA(66)).toEqual(3.5)
-		})
-
-		it('should return correct grade for 64', () => {
-			expect(rules.gradeToGPA(64)).toEqual(3.5)
-		})
-
-		it('should return correct grade for 63', () => {
-			expect(rules.gradeToGPA(63)).toEqual(3.25)
-		})
-
-		it('should return correct grade for 61', () => {
-			expect(rules.gradeToGPA(61)).toEqual(3.25)
-		})
-
-		it('should return correct grade for 60', () => {
-			expect(rules.gradeToGPA(60)).toEqual(3)
-		})
-
-		it('should return correct grade for 57', () => {
-			expect(rules.gradeToGPA(57)).toEqual(3)
-		})
-
-		it('should return correct grade for 56', () => {
-			expect(rules.gradeToGPA(56)).toEqual(2.75)
-		})
-
-		it('should return correct grade for 54', () => {
-			expect(rules.gradeToGPA(54)).toEqual(2.75)
-		})
-
-		it('should return correct grade for 53', () => {
-			expect(rules.gradeToGPA(53)).toEqual(2.5)
-		})
-
-		it('should return correct grade for 50', () => {
-			expect(rules.gradeToGPA(50)).toEqual(2.5)
-		})
-
-		it('should return correct grade for 49', () => {
-			expect(rules.gradeToGPA(49)).toEqual(2.5)
-		})
-
-		it('should return correct grade for 48', () => {
-			expect(rules.gradeToGPA(48)).toEqual(2.25)
-		})
-
-		it('should return correct grade for 47', () => {
-			expect(rules.gradeToGPA(47)).toEqual(2)
-		})
-
-		it('should return correct grade for 43', () => {
-			expect(rules.gradeToGPA(43)).toEqual(2)
-		})
-
-		it('should return correct grade for 42', () => {
-			expect(rules.gradeToGPA(42)).toEqual(1.5)
-		})
-
-		it('should return correct grade for 40', () => {
-			expect(rules.gradeToGPA(40)).toEqual(1.5)
-		})
-
-		it('should return correct grade for 39', () => {
-			expect(rules.gradeToGPA(39)).toEqual(1.5)
-		})
-
-		it('should return correct grade for 38', () => {
-			expect(rules.gradeToGPA(38)).toEqual(1)
-		})
-
-		it('should return correct grade for 37', () => {
-			expect(rules.gradeToGPA(37)).toEqual(0.75)
-		})
-
-		it('should return correct grade for 35', () => {
-			expect(rules.gradeToGPA(35)).toEqual(0.75)
-		})
-
-		it('should return correct grade for 34', () => {
-			expect(rules.gradeToGPA(34)).toEqual(0.5)
-		})
-
-		it('should return correct grade for 30', () => {
-			expect(rules.gradeToGPA(30)).toEqual(0.5)
-		})
-
-		it('should return correct grade for 29', () => {
-			expect(rules.gradeToGPA(29)).toEqual(0.5)
-		})
-
-		it('should return correct grade for 28', () => {
-			expect(rules.gradeToGPA(28)).toEqual(0)
-		})
-
-		it('should return correct grade for 0', () => {
-			expect(rules.gradeToGPA(0)).toEqual(0)
+		/**
+		 * This is to test the zones in `gpaZones` are correctly applied
+		 * Check each side of the boundaries and the 9's rule
+		 */
+		test.each([
+			[59.9, 3],
+			[59.5, 3],
+			[56.49, 2.75],
+			[49, 2.5],
+			[100, 4.25],
+			[75, 4.25],
+			[74, 4],
+			[71, 4],
+			[70, 3.75],
+			[67, 3.75],
+			[66, 3.5],
+			[64, 3.5],
+			[63, 3.25],
+			[61, 3.25],
+			[60, 3],
+			[57, 3],
+			[54, 2.75],
+			[53, 2.5],
+			[50, 2.5],
+			[49, 2.5],
+			[48, 2.25],
+			[47, 2],
+			[43, 2],
+			[42, 1.5],
+			[40, 1.5],
+			[39, 1.5],
+			[38, 1],
+			[37, 0.75],
+			[35, 0.75],
+			[34, 0.5],
+			[30, 0.5],
+			[29, 0.5],
+      [28, 0],
+      [0, 0],
+		])('should correctly grade %f as %f', (a, expected) => {
+			expect(rules.gradeToGPA(a)).toEqual(expected)
 		})
 
 		it('should return -999 for unknown value', () => {
@@ -210,74 +113,35 @@ describe('rules', () => {
 		})
 	})
 
-	describe('.rawmean', () => {
+	describe('.mean', () => {
 		it('should calculate correct mean for two values', () => {
-			expect(rules.rawmean([3, 5.5])).toEqual(4.25)
+			expect(rules.mean([3, 5.5])).toEqual(4.25)
 		})
 
 		it('should calculate correct mean for one value', () => {
-			expect(rules.rawmean([4])).toEqual(4)
+			expect(rules.mean([4])).toEqual(4)
 		})
 
 		it('should return 0 for array length of 0', () => {
-			expect(rules.rawmean([])).toEqual(0)
-		})
-	})
-
-	describe('.mean', () => {
-		it('should round down', () => {
-			expect(rules.mean([4.49])).toEqual(4)
-		})
-
-		it('should round up', () => {
-			expect(rules.mean([4.5])).toEqual(5)
+			expect(rules.mean([])).toEqual(0)
 		})
 	})
 
 	describe('.toClassification', () => {
-		it('should return first for 70', () => {
-			expect(rules.toClassification(80)).toEqual('First-class honours')
-		})
-
-		it('should return first for 70', () => {
-			expect(rules.toClassification(80)).toEqual('First-class honours')
-		})
-
-		it('should return first for > 70', () => {
-			expect(rules.toClassification(80)).toEqual('First-class honours')
-		})
-
-		it('should return 2:1 for 60', () => {
-			expect(rules.toClassification(60)).toEqual('Second-class honours (upper division)')
-		})
-
-		it('should return 2:1 for 69.9999999', () => {
-			expect(rules.toClassification(69.9999999)).toEqual('Second-class honours (upper division)')
-		})
-
-		it('should return 2:2 for 50', () => {
-			expect(rules.toClassification(50)).toEqual('Second-class honours (lower division)')
-		})
-
-		it('should return 2:2 for 59.9999999', () => {
-			expect(rules.toClassification(59.9999999)).toEqual('Second-class honours (lower division)')
-		})
-
-		it('should return third for 40', () => {
-			expect(rules.toClassification(40)).toEqual('Third-class honours')
-		})
-
-		it('should return third for 49.9999999', () => {
-			expect(rules.toClassification(49.9999999)).toEqual('Third-class honours')
-		})
-
-		it('should return failed for 39.9999999', () => {
-			expect(rules.toClassification(39.9999999)).toEqual('Failed')
-		})
-
-		it('should return failed for <39.9999999', () => {
-			expect(rules.toClassification(30)).toEqual('Failed')
-		})
+    test.each([
+      [100, 'First-class honours'],
+      [70, 'First-class honours'],
+      [60, 'Second-class honours (upper division)'],
+      [69.9999999, 'Second-class honours (upper division)'],
+      [50, 'Second-class honours (lower division)'],
+      [59.9999999, 'Second-class honours (lower division)'],
+      [40, 'Third-class honours'],
+      [49.9999999, 'Third-class honours'],
+      [0, 'Failed'],
+      [39.9999999, 'Failed'],
+    ])('should correctly classify %f as %s', (a, expected) => {
+      expect(rules.toClassification(a)).toEqual(expected)
+    })
 	})
 })
 

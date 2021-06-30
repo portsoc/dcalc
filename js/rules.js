@@ -100,7 +100,10 @@ function ruleC(marks) {
 }
 
 function mean(array) {
-  return array.reduce( (a,b) => a+b ) / array.length;
+  if (array.length === 0) {
+    return 0
+  }
+  return array.reduce( (a,b) => a+b) / array.length;
 }
 
 function toClassification(mark) {
@@ -118,7 +121,6 @@ module.exports = {
   ruleA: ruleA,
   ruleB: ruleB,
   ruleC: ruleC,
-  rawmean: rawmean,
   mean: mean,
   toClassification: toClassification,
 }
