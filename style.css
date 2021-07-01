@@ -3,25 +3,36 @@
   --bg: #FFF;
   --fg: #000;
   --hibg: #0076A6;
-  --highlight: #ffa;
+  --highlight: #99CCFF;
   --border: #888;
   --border-disabled: #aaa;
+  --corner: #621360;
+  --trans: background 0.4s ease-in-out;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #000;
-    --fg: #777;
-    --hibg: #CCC;
-    --highlight: #336;
+    --bg: #333;
+    --fg: #AAA;
+    --hibg: #30A6D6;
+    --highlight: #000;
     --border: #888;
     --border-disabled: #444;
+    --link: #996;
+    --corner: #996;
   }
+
+  a,
+  a:visited,
+  a:active {
+    color: var(--link);
+  }
+
 }
 
 
 html {
-  font-family: "Aero", "Calibri", sans-serif;
+  font-family: "Calibri", sans-serif;
   background: var(--bg);
   color: var(--fg);
 }
@@ -53,7 +64,7 @@ input {
   color: var(--fg);
   padding: 0.5ex 1ex;
   border: var(--border) solid 1px;
-  font-family: "Aero", "Calibri", sans-serif;
+  font-family: "Calibri", sans-serif;
   font-size: 1rem;
 }
 
@@ -86,12 +97,6 @@ input:focus {
   outline: 0.25rem var(--hibg) solid;
 }
 
-#rules {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 
 #finalClassification,
 #gpa,
@@ -105,10 +110,7 @@ input:focus {
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-}
-
-#results * {
-  margin: 0.2rem;
+  margin-bottom: 1em;
 }
 
 #copyzone {
@@ -137,12 +139,13 @@ input:focus {
   height: 10em;
   overflow: hidden;
 }
+
 #source a {
   font-weight: bold;
   display: block;
-  background: #621360;
+  background: var(--corner);
   padding: 3em 10em 1ex;
-  color: white;
+  color: var(--bg);
   transform: translateX(50%) rotate(45deg);
   transform-origin: top center;
   text-decoration: none;
@@ -152,6 +155,7 @@ input:focus {
   display: flex;
   flex-direction: column;
 }
+
 #share p { margin-top: 0; }
 #share input { font-size: 1rem; }
 #showingShared {
@@ -161,8 +165,17 @@ input:focus {
 
 [data-highlight]:hover,
 .highlight {
-  background-color: var(--highlight);
+  transition: var(--trans);
+  background: var(--highlight);
 }
+
+[data-highlight] {
+  transition: var(--trans);
+  padding: 0.5em 1em;
+  margin: -0.5em -1em;
+  border-radius: 0.5em;
+}
+
 
 @media screen and (min-width: 70rem) {
   main, header {
@@ -190,4 +203,19 @@ input:focus {
   #results {
     width: 100%;
   }
+}
+
+dt {
+  margin-left: -1em;
+  padding: 1em 0 0.5em 1em;
+  border-radius: 0.5em 0.5em 0 0;
+  transition: var(--trans);
+}
+
+
+dd {
+  margin-left: -1em;
+  padding: 0 1em 1em 2em;
+  border-radius: 0 0 0.5em 0.5em;
+  transition: var(--trans);
 }
