@@ -100,7 +100,7 @@ function ruleC(marks) {
 }
 
 function mean(array) {
-  return array.reduce( (a,b) => a+b) / array.length;
+  return array.reduce( (a,b) => a+b ) / array.length;
 }
 
 function toClassification(mark) {
