@@ -121,10 +121,6 @@ describe('rules', () => {
 		it('should calculate correct mean for one value', () => {
 			expect(rules.mean([4])).toEqual(4)
 		})
-
-		it('should return 0 for array length of 0', () => {
-			expect(rules.mean([])).toEqual(0)
-		})
 	})
 
 	describe('.toClassification', () => {
