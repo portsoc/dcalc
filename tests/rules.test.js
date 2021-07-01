@@ -1,4 +1,4 @@
-const rules = require('./rules')
+const rules = require('../js/rules')
 
 describe('rules', () => {
 	describe('.prepareMarks', () => {
