@@ -13,7 +13,7 @@ function init() {
 
   const shareLinkEl = document.querySelector('#shareLink');
   shareLinkEl.addEventListener('click', (e) => e.target.select());
-  
+
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
@@ -33,6 +33,23 @@ function init() {
   document.getElementById('copy').addEventListener('click', copyToClipboard);
 
   setupHighlighting();
+  loadModules();
+}
+
+async function loadModules() {
+  try {
+    const response = await fetch('modules.txt');
+    const modules = (await response.text()).split('\n');
+    const elems = modules.map( module => {
+      const e = document.createElement('option');
+      e.value=module;
+      console.log(e)
+      return e;
+    });
+    document.querySelector("#module-list").append(...elems);
+  } catch (e) {
+    console.error('Failed to load list of modules, using defaults', e)
+  }
 }
 
 function createShareLink() {
@@ -60,8 +77,8 @@ function loadSharedMarks(query) {
 function save(e) {
   if (e.target.validity.valid) {
     const input = e.target;
-    localStorage[input.id] = input.value;  
-  } 
+    localStorage[input.id] = input.value;
+  }
 }
 
 function loadSavedMarks() {
