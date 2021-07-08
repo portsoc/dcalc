@@ -13,7 +13,7 @@ function init() {
 
   const shareLinkEl = document.querySelector('#shareLink');
   shareLinkEl.addEventListener('click', (e) => e.target.select());
-  
+
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
@@ -60,8 +60,8 @@ function loadSharedMarks(query) {
 function save(e) {
   if (e.target.validity.valid) {
     const input = e.target;
-    localStorage[input.id] = input.value;  
-  } 
+    localStorage[input.id] = input.value;
+  }
 }
 
 function loadSavedMarks() {
@@ -75,12 +75,22 @@ function loadSavedMarks() {
 
 function recalculate() {
   const marks = gatherMarksFromPage();
-  if (!marks) {
 
+  if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
     document.querySelector('#ruleB').textContent = 'n/a';
     document.querySelector('#ruleC').textContent = 'n/a';
     document.querySelector('#finalClassification').textContent = 'not enough data';
+    document.querySelector('#gpa').textContent = 'n/a';
+    return;
+  }
+
+  if (isAnyMarkUnder40(marks)) {
+    document.querySelector('#ruleA').textContent = 'n/a';
+    document.querySelector('#ruleB').textContent = 'n/a';
+    document.querySelector('#ruleC').textContent = 'n/a';
+    document.querySelector('#finalClassification').textContent = 'failed a module, no degree classification';
+    document.querySelector('#gpa').textContent = 'n/a';
     return;
   }
 
@@ -101,6 +111,12 @@ function recalculate() {
 
   document.querySelector('#gpa').textContent = gpa(marks);
 
+}
+
+function isAnyMarkUnder40(marks) {
+  return marks.fyp < 40
+    || marks.l5.some(m => m < 40)
+    || marks.l6.some(m => m < 40);
 }
 
 function gatherMarksFromPage() {
