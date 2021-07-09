@@ -1,3 +1,7 @@
+/*********************************************
+ * NARROW LAYOUT (DEFAULT)
+ *********************************************/
+
 :root {
   --numsize: 120%;
   --bg: #FFF;
@@ -8,7 +12,26 @@
   --border-disabled: #aaa;
   --corner: #621360;
   --trans: background 0.4s ease-in-out;
+  --header-align: inherit;
+  --wide-direction: column;
+  --wide-align: center;
 }
+
+/*********************************************
+ * WIDE LAYOUT
+ *********************************************/
+
+ @media screen and (min-width: 70rem) {
+  :root {
+    --header-align: center;
+    --wide-direction: row;
+    --wide-align: start;
+  }
+}
+
+/*********************************************
+ * DARK MODE
+ *********************************************/
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -30,11 +53,47 @@
 
 }
 
+/*********************************************
+ * GENERAL LAYOUT
+ *********************************************/
 
 html {
   font-family: "Calibri", sans-serif;
   background: var(--bg);
   color: var(--fg);
+}
+
+main {
+  max-width: 70em;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: var(--wide-direction);
+  align-items: var(--wide-align);
+}
+
+header {
+  text-align: var(--header-align);
+}
+
+section {
+  display: inline-block;
+  width: 30rem;
+}
+
+/*********************************************
+ * RESULTS
+ *********************************************/
+
+
+#results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  width: 100%;
 }
 
 .module {
@@ -105,13 +164,9 @@ input:focus {
   font-weight: bold;
 }
 
-#results {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  margin-bottom: 1em;
-}
+/*********************************************
+ * SHARE INDICATION
+ *********************************************/
 
 #copyzone {
   display: flex;
@@ -123,13 +178,9 @@ input:focus {
 }
 
 
-@media screen and (min-width: 30rem) {
-  main, header {
-    max-width: 30em;
-    position: relative;
-    margin: 0 auto;
-  }
-}
+/*********************************************
+ * CORNER SOURCE LINK
+ *********************************************/
 
 #source {
   display: block;
@@ -138,6 +189,7 @@ input:focus {
   top: 0;
   height: 10em;
   overflow: hidden;
+  z-index: -1;
 }
 
 #source a {
@@ -146,10 +198,14 @@ input:focus {
   background: var(--corner);
   padding: 3em 10em 1ex;
   color: var(--bg);
-  transform: translateX(50%) rotate(45deg);
+  transform: translateX(50%) rotate(45deg) scale(0.75);
   transform-origin: top center;
   text-decoration: none;
 }
+
+/*********************************************
+ * SHARE
+ *********************************************/
 
 #share {
   display: flex;
@@ -162,6 +218,10 @@ input:focus {
   flex: 0 0 100%;
   text-align: center;
 }
+
+/*********************************************
+ * RULE HIGHLIGHTING
+ *********************************************/
 
 [data-highlight]:hover,
 .highlight {
@@ -176,42 +236,12 @@ input:focus {
   border-radius: 0.5em;
 }
 
-
-@media screen and (min-width: 70rem) {
-  main, header {
-    max-width: 70rem;
-    position: relative;
-    margin: 0 auto;
-  }
-
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-
-  header {
-    text-align: center;
-  }
-
-  section {
-    display: inline-block;
-    width: 30rem;
-  }
-
-  #results {
-    width: 100%;
-  }
-}
-
 dt {
   margin-left: -1em;
   padding: 1em 0 0.5em 1em;
   border-radius: 0.5em 0.5em 0 0;
   transition: var(--trans);
 }
-
 
 dd {
   margin-left: -1em;

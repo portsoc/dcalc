@@ -1,0 +1,72 @@
+3D Computer Graphics and Animation
+Advanced Database Concepts
+Advanced Networks
+Advanced Systems Analysis
+Application Engineering
+Application Programming
+Applied Machine Learning and Data Mining
+Architecture and Operating Systems
+Basics of The Business Environment
+Big Data
+Business & Employment Law
+Business Analytics
+Business Information Systems Security
+Business Research
+Business Systems Analysis
+Business Systems Analysis and Design
+Computing in Context
+Computing Undergraduate Ambassador
+Core Computing Concepts
+Core Computing Concepts for Cyber Security and Forensic Computing
+Cyber Security and Forensic Computing
+Cyberlaw Governance and Human Rights
+Data Analytics and Visualisation
+Data Structures and Algorithms
+Database Principles
+Database Systems Development
+Digital Enterprise and Innovation 1
+Digital Enterprise and Innovation 2
+Discrete Mathematics and Functional Programming
+Distributed Systems and Security
+Educational Computing
+Engineering Science
+Enterprise Web Architectures
+Ethical Hacking
+Exchange Study Abroad
+Final Year Study Project
+Forensics Fundamentals
+Forensics Investigations
+Fuzzy Systems and Networks
+Graphics and Computer Vision
+Hacking for Defence
+Information Systems and Project Management
+Information Systems Management
+Interaction Design
+Internet of Things
+Introduction To Computer Essentials
+Learning From Experience
+Malware Forensics
+Network Servers and Services
+Networks
+Neural Networks and Genetic Algorithms
+Open Innovations in Data Science
+Operating Systems and Internetworking
+Practical Data Analytics and Mining
+Practical Data Science
+Professional and Academic Research Development
+Programming
+Programming Applications and Programming Languages
+Project Management
+Robotics
+Scalable Software Engineering
+Security and Cryptography
+Security Management
+Social Computing for Business
+Software Engineering Theory and Practice
+System Administration and Internetworking
+Theoretical Computer Science
+Usability Engineering
+User Experience Design
+Virtualisation and Cloud Computing
+Vulnerability Discovery and Exploitation
+Web Programming
