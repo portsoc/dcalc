@@ -18,7 +18,7 @@ function init() {
 
   const shareLinkEl = document.querySelector('#shareLink');
   shareLinkEl.addEventListener('click', (e) => e.target.select());
-  
+
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
@@ -36,6 +36,8 @@ function init() {
   recalculate();
 
   document.getElementById('copy').addEventListener('click', copyToClipboard);
+
+  setupHighlighting();
 }
 
 function changeDegree(e) {
@@ -79,8 +81,8 @@ function loadSharedMarks(query) {
 function save(e) {
   if (e.target.validity.valid) {
     const input = e.target;
-    localStorage[input.id] = input.value;  
-  } 
+    localStorage[input.id] = input.value;
+  }
 }
 
 function loadSavedMarks() {
@@ -94,12 +96,22 @@ function loadSavedMarks() {
 
 function recalculate() {
   const marks = gatherMarksFromPage();
-  if (!marks) {
 
+  if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
     document.querySelector('#ruleB').textContent = 'n/a';
     document.querySelector('#ruleC').textContent = 'n/a';
     document.querySelector('#finalClassification').textContent = 'not enough data';
+    document.querySelector('#gpa').textContent = 'n/a';
+    return;
+  }
+
+  if (isAnyMarkUnder40(marks)) {
+    document.querySelector('#ruleA').textContent = 'n/a';
+    document.querySelector('#ruleB').textContent = 'n/a';
+    document.querySelector('#ruleC').textContent = 'n/a';
+    document.querySelector('#finalClassification').textContent = 'failed a module, no degree classification';
+    document.querySelector('#gpa').textContent = 'n/a';
     return;
   }
 
@@ -121,6 +133,12 @@ function recalculate() {
   document.querySelector('#finalClassification').textContent = finalClassification;
 
   document.querySelector('#gpa').textContent = (usingMeng) ? 'n/a' : gpa(marks);
+}
+
+function isAnyMarkUnder40(marks) {
+  return marks.fyp < 40
+    || marks.l5.some(m => m < 40)
+    || marks.l6.some(m => m < 40);
 }
 
 function gatherMarksFromPage() {
@@ -234,6 +252,22 @@ function copyToClipboard () {
   sl.select();
   document.execCommand('copy');
   sl.blur();
+}
+
+function setupHighlighting() {
+  const triggers = document.querySelectorAll('[data-highlight]');
+  for (const trigger of triggers) {
+    trigger.addEventListener('mouseenter', () => highlight(trigger, true));
+    trigger.addEventListener('mouseleave', () => highlight(trigger, false));
+    console.log(trigger);
+  }
+}
+
+function highlight(trigger, showHighlight) {
+  const targets = document.querySelectorAll(trigger.dataset.highlight);
+  for (const target of targets) {
+    target.classList.toggle('highlight', showHighlight);
+  }
 }
 
 window.addEventListener('load', init);
