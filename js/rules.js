@@ -51,11 +51,11 @@ function prepareMarks(marks) {
   marks.prepared.l5.length = 5;
 
   marks.prepared.l6 = marks.l6.slice();
+  marks.prepared.l6.push(marks.fyp);
+  marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.sort(reverseNumericalComparison);
-  marks.prepared.l6.length = 3;
+  marks.prepared.l6.length = 5;
 
-  marks.prepared.l6.push(marks.fyp);
-  marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.sort(reverseNumericalComparison);
 
   // add GPA
