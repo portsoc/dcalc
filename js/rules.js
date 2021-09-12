@@ -111,7 +111,7 @@ function toClassification(mark) {
   return 'First-class honours';
 }
 
-module.exports = {
+window.rules = {
   prepareMarks: prepareMarks,
   gradeToGPA: gradeToGPA,
   gpa: gpa,

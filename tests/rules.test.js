@@ -1,23 +1,25 @@
-const rules = require('../js/rules')
+require('../js/rules')
 
 describe('rules', () => {
 	describe('.prepareMarks', () => {
-		const marks = {
-			l5: [70, 80, 75, 60, 70, 70],
-			l6: [65, 75, 70, 70],
-			fyp: 90,
-		}
+		it('should prepare marks', () => {
+			const marks = {
+				l5: [70, 80, 75, 60, 70, 70],
+				l6: [65, 75, 70, 70],
+				fyp: 90,
+			}
 
-		rules.prepareMarks(marks)
+			window.rules.prepareMarks(marks)
 
-		const expectedPrepared = {
-			l5: [80, 75, 70, 70, 70],
-			l6: [90, 90, 75, 70, 70],
-			l5gpa: [4.25, 4.25, 3.75, 3.75, 3.75],
-			l6gpa: [4.25, 4.25, 4.25, 3.75, 3.75],
-		}
+			const expectedPrepared = {
+				l5: [80, 75, 70, 70, 70],
+				l6: [90, 90, 75, 70, 70],
+				l5gpa: [4.25, 4.25, 3.75, 3.75, 3.75],
+				l6gpa: [4.25, 4.25, 4.25, 3.75, 3.75],
+			}
 
-		expect(marks.prepared).toEqual(expectedPrepared)
+			expect(marks.prepared).toEqual(expectedPrepared)
+		})
 	})
 
 	describe('.gradeToGPA', () => {
@@ -61,17 +63,17 @@ describe('rules', () => {
       [28, 0],
       [0, 0],
 		])('should correctly grade %f as %f', (a, expected) => {
-			expect(rules.gradeToGPA(a)).toEqual(expected)
+			expect(window.rules.gradeToGPA(a)).toEqual(expected)
 		})
 
 		it('should return -999 for unknown value', () => {
-			expect(rules.gradeToGPA(-1)).toEqual(-999)
+			expect(window.rules.gradeToGPA(-1)).toEqual(-999)
 		})
 	})
 
 	describe('.gpa', () => {
 		it('should calculate gpa correctly', () => {
-			expect(rules.gpa({
+			expect(window.rules.gpa({
 				prepared: {
 					l5gpa: [3],
 					l6gpa: [4],
@@ -82,7 +84,7 @@ describe('rules', () => {
 
 	describe('.ruleA', () => {
 		it('should calculate correctly', () => {
-			expect(rules.ruleA({
+			expect(window.rules.ruleA({
 				prepared: {
 					l5: [80],
 					l6: [90],
@@ -93,7 +95,7 @@ describe('rules', () => {
 
 	describe('.ruleB', () => {
 		it('should calculate correctly', () => {
-			expect(rules.ruleB({
+			expect(window.rules.ruleB({
 				prepared: {
 					l5: [60],
 					l6: [80],
@@ -104,7 +106,7 @@ describe('rules', () => {
 
 	describe('.ruleC', () => {
 		it('should calculate correctly', () => {
-			expect(rules.ruleC({
+			expect(window.rules.ruleC({
 				prepared: {
 					l5: [70, 70, 70, 70, 70],
 					l6: [70, 60, 60, 60, 60],
@@ -115,11 +117,11 @@ describe('rules', () => {
 
 	describe('.mean', () => {
 		it('should calculate correct mean for two values', () => {
-			expect(rules.mean([3, 5.5])).toEqual(4.25)
+			expect(window.rules.mean([3, 5.5])).toEqual(4.25)
 		})
 
 		it('should calculate correct mean for one value', () => {
-			expect(rules.mean([4])).toEqual(4)
+			expect(window.rules.mean([4])).toEqual(4)
 		})
 	})
 
@@ -136,7 +138,7 @@ describe('rules', () => {
       [0, 'Failed'],
       [39.9999999, 'Failed'],
     ])('should correctly classify %f as %s', (a, expected) => {
-      expect(rules.toClassification(a)).toEqual(expected)
+      expect(window.rules.toClassification(a)).toEqual(expected)
     })
 	})
 })
