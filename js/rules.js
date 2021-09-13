@@ -69,7 +69,7 @@ function reverseNumericalComparison(a, b) {
 
 function gradeToGPA(num) {
   num = Math.round(num); // round up from .5
-  num = (num % 10 == 9 ? num + 1 : num); // round nines up
+  num = (num % 10 === 9 ? num + 1 : num); // round nines up
   for (const zone of gpaZones) {
     if (num >= zone[0] && num <= zone[1]) return zone[2];
   }
