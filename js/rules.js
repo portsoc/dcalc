@@ -25,22 +25,22 @@ marks are an object like this:
 
 */
 
-const gpaZones =   [
-  [ 75, 100, 4.25 ],
-  [ 71, 74, 4.00 ],
-  [ 67, 70, 3.75 ],
-  [ 64, 66, 3.50 ],
-  [ 61, 63, 3.25 ],
-  [ 57, 60, 3.00 ],
-  [ 54, 56, 2.75 ],
-  [ 50, 53, 2.50 ],
-  [ 48, 48, 2.25 ],
-  [ 43, 47, 2.00 ],
-  [ 40, 42, 1.50 ],
-  [ 38, 38, 1.00 ],
-  [ 35, 37, 0.75 ],
-  [ 30, 34, 0.50 ],
-  [ 0, 28, 0.00 ]
+const gpaZones = [
+  [75, 100, 4.25],
+  [71, 74, 4.00],
+  [67, 70, 3.75],
+  [64, 66, 3.50],
+  [61, 63, 3.25],
+  [57, 60, 3.00],
+  [54, 56, 2.75],
+  [50, 53, 2.50],
+  [48, 48, 2.25],
+  [43, 47, 2.00],
+  [40, 42, 1.50],
+  [38, 38, 1.00],
+  [35, 37, 0.75],
+  [30, 34, 0.50],
+  [0, 28, 0.00],
 ];
 
 function prepareMarks(marks) {
@@ -64,12 +64,12 @@ function prepareMarks(marks) {
 }
 
 function reverseNumericalComparison(a, b) {
-  return b-a;
+  return b - a;
 }
 
 function gradeToGPA(num) {
   num = Math.round(num); // round up from .5
-  num = (num % 10 == 9 ? num+1 : num); // round nines up
+  num = (num % 10 == 9 ? num + 1 : num); // round nines up
   for (const zone of gpaZones) {
     if (num >= zone[0] && num <= zone[1]) return zone[2];
   }
@@ -79,7 +79,7 @@ function gradeToGPA(num) {
 function gpa(marks) {
   const weightedl5mean = mean(marks.prepared.l5gpa) * 0.4;
   const weightedl6mean = mean(marks.prepared.l6gpa) * 0.6;
-  return Number( weightedl5mean + weightedl6mean ).toFixed(2);
+  return Number(weightedl5mean + weightedl6mean).toFixed(2);
 }
 
 function ruleA(marks) {
@@ -100,7 +100,7 @@ function ruleC(marks) {
 }
 
 function mean(array) {
-  return array.reduce( (a,b) => a+b ) / array.length;
+  return array.reduce((a, b) => a + b) / array.length;
 }
 
 function toClassification(mark) {
@@ -110,7 +110,6 @@ function toClassification(mark) {
   if (mark < 70) return 'Second-class honours (upper division)';
   return 'First-class honours';
 }
-
 
 
 /* for testing

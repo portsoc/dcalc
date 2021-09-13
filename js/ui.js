@@ -17,8 +17,8 @@ function init() {
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
-    document.querySelector('#showingShared').style='';
-    document.querySelector('#share').style='display: none';
+    document.querySelector('#showingShared').style = '';
+    document.querySelector('#share').style = 'display: none';
     document.querySelector('#showingShared a').href = window.location.origin + window.location.pathname;
   } else {
     loadSavedMarks();
@@ -104,19 +104,18 @@ function recalculate() {
   document.querySelector('#ruleB').textContent = b;
   document.querySelector('#ruleC').textContent = c;
 
-  const finalMark = Math.max(a,b,c);
+  const finalMark = Math.max(a, b, c);
   const finalClassification = toClassification(finalMark);
 
   document.querySelector('#finalClassification').textContent = finalClassification;
 
   document.querySelector('#gpa').textContent = gpa(marks);
-
 }
 
 function isAnyMarkUnder40(marks) {
-  return marks.fyp < 40
-    || marks.l5.some(m => m < 40)
-    || marks.l6.some(m => m < 40);
+  return marks.fyp < 40 ||
+    marks.l5.some(m => m < 40) ||
+    marks.l6.some(m => m < 40);
 }
 
 function gatherMarksFromPage() {
@@ -168,8 +167,8 @@ function parseQueryParams() {
 
   /* parse the query */
   const params = search.replace(/;/g, '&').split('&');
-  let q = {};
-  for (let i=0; i<params.length; i++) {
+  const q = {};
+  for (let i = 0; i < params.length; i++) {
     const t = params[i].split('=', 2);
     const name = decodeURIComponent(t[0]);
     if (!q[name]) {
@@ -184,8 +183,8 @@ function parseQueryParams() {
   return q;
 }
 
-function copyToClipboard () {
-  const sl = document.querySelector("#shareLink");
+function copyToClipboard() {
+  const sl = document.querySelector('#shareLink');
   sl.select();
   document.execCommand('copy');
   sl.blur();
