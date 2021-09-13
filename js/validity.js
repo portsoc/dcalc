@@ -3,7 +3,7 @@ const messages = {
   min0: 'Zero (0) is the lowest grade.',
 };
 
-function init() {
+export function init() {
   const numbers = document.querySelectorAll('input[type="number"]');
 
   for (const num of numbers) {
@@ -33,6 +33,3 @@ function checkNumberValidity(e) {
   }
   report(e.target, '');
 }
-
-
-window.addEventListener('load', init);

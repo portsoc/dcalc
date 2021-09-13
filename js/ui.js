@@ -1,3 +1,6 @@
+import * as rules from './rules.js';
+import * as validity from './validity.js';
+
 function init() {
   const query = parseQueryParams();
 
@@ -33,6 +36,8 @@ function init() {
   document.getElementById('copy').addEventListener('click', copyToClipboard);
 
   setupHighlighting();
+
+  validity.init();
 }
 
 function createShareLink() {
@@ -94,22 +99,22 @@ function recalculate() {
     return;
   }
 
-  prepareMarks(marks);
+  rules.prepareMarks(marks);
 
-  const a = ruleA(marks);
-  const b = ruleB(marks);
-  const c = ruleC(marks);
+  const a = rules.ruleA(marks);
+  const b = rules.ruleB(marks);
+  const c = rules.ruleC(marks);
 
   document.querySelector('#ruleA').textContent = a;
   document.querySelector('#ruleB').textContent = b;
   document.querySelector('#ruleC').textContent = c;
 
   const finalMark = Math.max(a, b, c);
-  const finalClassification = toClassification(finalMark);
+  const finalClassification = rules.toClassification(finalMark);
 
   document.querySelector('#finalClassification').textContent = finalClassification;
 
-  document.querySelector('#gpa').textContent = gpa(marks);
+  document.querySelector('#gpa').textContent = rules.gpa(marks);
 }
 
 function isAnyMarkUnder40(marks) {

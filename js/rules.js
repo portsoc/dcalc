@@ -43,7 +43,7 @@ const gpaZones = [
   [0, 28, 0.00],
 ];
 
-function prepareMarks(marks) {
+export function prepareMarks(marks) {
   marks.prepared = {};
 
   marks.prepared.l5 = marks.l5.slice();
@@ -76,24 +76,24 @@ function gradeToGPA(num) {
   return -999;
 }
 
-function gpa(marks) {
+export function gpa(marks) {
   const weightedl5mean = mean(marks.prepared.l5gpa) * 0.4;
   const weightedl6mean = mean(marks.prepared.l6gpa) * 0.6;
   return Number(weightedl5mean + weightedl6mean).toFixed(2);
 }
 
-function ruleA(marks) {
+export function ruleA(marks) {
   const l5mean = mean(marks.prepared.l5);
   const l6mean = mean(marks.prepared.l6);
   return Math.round(l5mean * 0.4 + l6mean * 0.6);
 }
 
-function ruleB(marks) {
+export function ruleB(marks) {
   const l6mean = mean(marks.prepared.l6);
   return Math.round(l6mean);
 }
 
-function ruleC(marks) {
+export function ruleC(marks) {
   const allMarks = marks.prepared.l5.concat(marks.prepared.l6);
   allMarks.sort(reverseNumericalComparison);
   return Math.round(allMarks[allMarks.length / 2]);
@@ -103,7 +103,7 @@ function mean(array) {
   return array.reduce((a, b) => a + b) / array.length;
 }
 
-function toClassification(mark) {
+export function toClassification(mark) {
   if (mark < 40) return 'Failed';
   if (mark < 50) return 'Third-class honours';
   if (mark < 60) return 'Second-class honours (lower division)';
