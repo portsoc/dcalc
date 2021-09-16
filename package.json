@@ -1,0 +1,30 @@
+{
+  "name": "dcalc",
+  "version": "0.0.1",
+  "description": "Portsmouth Degree Calculator",
+  "main": "index.html",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/portsoc/dcalc.git"
+  },
+  "author": "softeng@port.ac.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/portsoc/dcalc/issues"
+  },
+  "homepage": "https://github.com/portsoc/dcalc#readme",
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-portsoc": "^0.8.2"
+  },
+  "eslintConfig": {
+    "extends": "portsoc",
+    "root": true,
+    "env": {
+      "browser": true
+    }
+  }
+}
