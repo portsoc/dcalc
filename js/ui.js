@@ -38,6 +38,22 @@ function init() {
   setupHighlighting();
 
   validity.init();
+  loadModules();
+}
+
+async function loadModules() {
+  try {
+    const response = await fetch('modules.txt');
+    const modules = (await response.text()).split('\n');
+    const elems = modules.map(module => {
+      const e = document.createElement('option');
+      e.value = module;
+      return e;
+    });
+    document.querySelector('#module-list').append(...elems);
+  } catch (e) {
+    console.error('Failed to load list of modules, using defaults', e);
+  }
 }
 
 function createShareLink() {
@@ -200,7 +216,6 @@ function setupHighlighting() {
   for (const trigger of triggers) {
     trigger.addEventListener('mouseenter', () => highlight(trigger, true));
     trigger.addEventListener('mouseleave', () => highlight(trigger, false));
-    console.log(trigger);
   }
 }
 
