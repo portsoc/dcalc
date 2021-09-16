@@ -3,10 +3,11 @@ const cacheable = [
   './',
   './manifest.json',
   './index.html',
-  './app.js',
-  './app_worker.js',
   './js/rules.js',
   './js/ui.js',
+  './js/validity.js',
+  './js/service-worker.js',
+  './js/service-worker-loader.js',
   './style.css',
   './img/192.png',
   './img/512.png',
@@ -46,7 +47,7 @@ function interceptFetch(evt) {
 async function prepareCache() {
   console.log('Cache: preparing');
   const c = await caches.open(CACHE);
-  c.addAll(cacheable);
+  await c.addAll(cacheable);
   console.log('Cache: prepared');
 }
 
