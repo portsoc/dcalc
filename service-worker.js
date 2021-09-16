@@ -9,6 +9,7 @@ const cacheable = [
   './js/service-worker.js',
   './js/service-worker-loader.js',
   './style.css',
+  './modules.txt',
   './img/192.png',
   './img/512.png',
 ];
