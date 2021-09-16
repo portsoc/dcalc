@@ -38,6 +38,23 @@ function init() {
   setupHighlighting();
 
   validity.init();
+  loadModules();
+}
+
+async function loadModules() {
+  try {
+    const response = await fetch('modules.txt');
+    const modules = (await response.text()).split('\n');
+    const elems = modules.map( module => {
+      const e = document.createElement('option');
+      e.value=module;
+      console.log(e)
+      return e;
+    });
+    document.querySelector("#module-list").append(...elems);
+  } catch (e) {
+    console.error('Failed to load list of modules, using defaults', e)
+  }
 }
 
 function createShareLink() {
