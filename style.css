@@ -189,7 +189,6 @@ input:focus {
   top: 0;
   height: 10em;
   overflow: hidden;
-  z-index: -1;
 }
 
 #source a {
