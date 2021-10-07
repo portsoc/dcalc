@@ -96,6 +96,9 @@ function loadSavedMarks() {
 
 function recalculate() {
   const marks = gatherMarksFromPage();
+  document.querySelector('#ruleAExp')?.remove();
+  document.querySelector('#ruleBExp')?.remove();
+  document.querySelector('#ruleCExp')?.remove();
 
   if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
@@ -131,6 +134,40 @@ function recalculate() {
   document.querySelector('#finalClassification').textContent = finalClassification;
 
   document.querySelector('#gpa').textContent = rules.gpa(marks);
+
+  const rulesTable = document.querySelector('#rule-explanation > dl');
+
+  // populate rule A template
+  const ruleACalcTemplate = document.querySelector('#ruleACalcExplained').content.cloneNode(true);
+  ruleACalcTemplate.querySelector('.l5-lowest-grade').textContent = marks.prepared.l5Lowest;
+  ruleACalcTemplate.querySelector('.l6-lowest-grade').textContent = marks.prepared.l6Lowest;
+  ruleACalcTemplate.querySelector('.l5-calc').textContent = marks.prepared.l5Calc;
+  ruleACalcTemplate.querySelector('.l6-calc').textContent = marks.prepared.l6Calc;
+  ruleACalcTemplate.querySelector('.l5-mean').textContent = rules.mean(marks.prepared.l5);
+  ruleACalcTemplate.querySelector('.l6-mean').textContent = rules.mean(marks.prepared.l6);
+  ruleACalcTemplate.querySelector('.rule-a').textContent = a;
+
+  // populate rule B template
+  const ruleBCalcTemplate = document.querySelector('#ruleBCalcExplained').content.cloneNode(true);
+  ruleBCalcTemplate.querySelector('.l6-lowest-grade').textContent = marks.prepared.l6Lowest;
+  ruleBCalcTemplate.querySelector('.l6-calc').textContent = marks.prepared.l6Calc;
+
+  // populate rule C template
+  const ruleCCalcTemplate = document.querySelector('#ruleCCalcExplained').content.cloneNode(true);
+  const allMarks = marks.prepared.l5.concat(marks.prepared.l6);
+  allMarks.sort(rules.reverseNumericalComparison);
+  const ruleCCalc = allMarks.join(', ');
+  ruleCCalcTemplate.querySelector('#ruleCCalc').textContent = ruleCCalc;
+  ruleCCalcTemplate.querySelector('#ruleCCalcResult').textContent = c;
+
+  // append templates
+  const ruleBTitle = document.querySelector('dt.rule-b-defn');
+  rulesTable.insertBefore(ruleACalcTemplate, ruleBTitle);
+
+  const ruleCTitle = document.querySelector('dt.rule-c-defn');
+  rulesTable.insertBefore(ruleBCalcTemplate, ruleCTitle);
+
+  rulesTable.appendChild(ruleCCalcTemplate);
 }
 
 function isAnyMarkUnder40(marks) {
