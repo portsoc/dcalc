@@ -10,4 +10,4 @@ Please add suggestions & bug reports to the [issue list](https://github.com/port
 
 # Credits
 * It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
-* Props to Dan Harper who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
+* Props to [Dan Harper](https://www.danharper.me/) who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
