@@ -8,6 +8,11 @@ If you're a student, it may be interesting to see how your current/predicted gra
 
 Please add suggestions & bug reports to the [issue list](https://github.com/portsoc/dcalc/issues).
 
+## Running Tests
+- To run the tests you'll need to have the latest LTS of node installed, the easiest way to get this is using [nvm](https://github.com/nvm-sh/nvm) if you're on Mac or Linux
+- `npm install`
+- `npm run test`
+
 # Credits
 * It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
 * Props to [Dan Harper](https://www.danharper.me/) who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
