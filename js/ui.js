@@ -1,3 +1,6 @@
+import * as rules from './rules.js';
+import * as validity from './validity.js';
+
 function init() {
   const query = parseQueryParams();
 
@@ -13,12 +16,12 @@ function init() {
 
   const shareLinkEl = document.querySelector('#shareLink');
   shareLinkEl.addEventListener('click', (e) => e.target.select());
-  
+
   if (query.share) {
     // we are using shared marks, disabling local storage usage and mark editing
     loadSharedMarks(query);
-    document.querySelector('#showingShared').style='';
-    document.querySelector('#share').style='display: none';
+    document.querySelector('#showingShared').style = '';
+    document.querySelector('#share').style = 'display: none';
     document.querySelector('#showingShared a').href = window.location.origin + window.location.pathname;
   } else {
     loadSavedMarks();
@@ -33,6 +36,24 @@ function init() {
   document.getElementById('copy').addEventListener('click', copyToClipboard);
 
   setupHighlighting();
+
+  validity.init();
+  loadModules();
+}
+
+async function loadModules() {
+  try {
+    const response = await fetch('modules.txt');
+    const modules = (await response.text()).split('\n');
+    const elems = modules.map(module => {
+      const e = document.createElement('option');
+      e.value = module;
+      return e;
+    });
+    document.querySelector('#module-list').append(...elems);
+  } catch (e) {
+    console.error('Failed to load list of modules, using defaults', e);
+  }
 }
 
 function createShareLink() {
@@ -60,8 +81,8 @@ function loadSharedMarks(query) {
 function save(e) {
   if (e.target.validity.valid) {
     const input = e.target;
-    localStorage[input.id] = input.value;  
-  } 
+    localStorage[input.id] = input.value;
+  }
 }
 
 function loadSavedMarks() {
@@ -75,32 +96,47 @@ function loadSavedMarks() {
 
 function recalculate() {
   const marks = gatherMarksFromPage();
-  if (!marks) {
 
+  if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
     document.querySelector('#ruleB').textContent = 'n/a';
     document.querySelector('#ruleC').textContent = 'n/a';
     document.querySelector('#finalClassification').textContent = 'not enough data';
+    document.querySelector('#gpa').textContent = 'n/a';
     return;
   }
 
-  prepareMarks(marks);
+  if (isAnyMarkUnder40(marks)) {
+    document.querySelector('#ruleA').textContent = 'n/a';
+    document.querySelector('#ruleB').textContent = 'n/a';
+    document.querySelector('#ruleC').textContent = 'n/a';
+    document.querySelector('#finalClassification').textContent = 'failed a module, no degree classification';
+    document.querySelector('#gpa').textContent = 'n/a';
+    return;
+  }
 
-  const a = ruleA(marks);
-  const b = ruleB(marks);
-  const c = ruleC(marks);
+  rules.prepareMarks(marks);
+
+  const a = rules.ruleA(marks);
+  const b = rules.ruleB(marks);
+  const c = rules.ruleC(marks);
 
   document.querySelector('#ruleA').textContent = a;
   document.querySelector('#ruleB').textContent = b;
   document.querySelector('#ruleC').textContent = c;
 
-  const finalMark = Math.max(a,b,c);
-  const finalClassification = toClassification(finalMark);
+  const finalMark = Math.max(a, b, c);
+  const finalClassification = rules.toClassification(finalMark);
 
   document.querySelector('#finalClassification').textContent = finalClassification;
 
-  document.querySelector('#gpa').textContent = gpa(marks);
+  document.querySelector('#gpa').textContent = rules.gpa(marks);
+}
 
+function isAnyMarkUnder40(marks) {
+  return marks.fyp < 40 ||
+    marks.l5.some(m => m < 40) ||
+    marks.l6.some(m => m < 40);
 }
 
 function gatherMarksFromPage() {
@@ -152,8 +188,8 @@ function parseQueryParams() {
 
   /* parse the query */
   const params = search.replace(/;/g, '&').split('&');
-  let q = {};
-  for (let i=0; i<params.length; i++) {
+  const q = {};
+  for (let i = 0; i < params.length; i++) {
     const t = params[i].split('=', 2);
     const name = decodeURIComponent(t[0]);
     if (!q[name]) {
@@ -168,8 +204,8 @@ function parseQueryParams() {
   return q;
 }
 
-function copyToClipboard () {
-  const sl = document.querySelector("#shareLink");
+function copyToClipboard() {
+  const sl = document.querySelector('#shareLink');
   sl.select();
   document.execCommand('copy');
   sl.blur();
@@ -180,7 +216,6 @@ function setupHighlighting() {
   for (const trigger of triggers) {
     trigger.addEventListener('mouseenter', () => highlight(trigger, true));
     trigger.addEventListener('mouseleave', () => highlight(trigger, false));
-    console.log(trigger);
   }
 }
 

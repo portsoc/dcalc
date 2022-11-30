@@ -1,29 +1,99 @@
+/*********************************************
+ * NARROW LAYOUT (DEFAULT)
+ *********************************************/
+
 :root {
   --numsize: 120%;
   --bg: #FFF;
   --fg: #000;
   --hibg: #0076A6;
-  --highlight: #ffa;
+  --highlight: #99CCFF;
   --border: #888;
   --border-disabled: #aaa;
+  --corner: #621360;
+  --trans: background 0.4s ease-in-out;
+  --header-align: inherit;
+  --wide-direction: column;
+  --wide-align: center;
 }
 
-@media (prefers-color-scheme: dark) {
+/*********************************************
+ * WIDE LAYOUT
+ *********************************************/
+
+ @media screen and (min-width: 70rem) {
   :root {
-    --bg: #000;
-    --fg: #777;
-    --hibg: #CCC;
-    --highlight: #336;
-    --border: #888;
-    --border-disabled: #444;
+    --header-align: center;
+    --wide-direction: row;
+    --wide-align: start;
   }
 }
 
+/*********************************************
+ * DARK MODE
+ *********************************************/
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #333;
+    --fg: #AAA;
+    --hibg: #30A6D6;
+    --highlight: #000;
+    --border: #888;
+    --border-disabled: #444;
+    --link: #996;
+    --corner: #996;
+  }
+
+  a,
+  a:visited,
+  a:active {
+    color: var(--link);
+  }
+
+}
+
+/*********************************************
+ * GENERAL LAYOUT
+ *********************************************/
 
 html {
-  font-family: "Aero", "Calibri", sans-serif;
+  font-family: "Calibri", sans-serif;
   background: var(--bg);
   color: var(--fg);
+}
+
+main {
+  max-width: 70em;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  flex-direction: var(--wide-direction);
+  align-items: var(--wide-align);
+}
+
+header {
+  text-align: var(--header-align);
+}
+
+section {
+  display: inline-block;
+  width: 30rem;
+}
+
+/*********************************************
+ * RESULTS
+ *********************************************/
+
+
+#results {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+  width: 100%;
 }
 
 .module {
@@ -53,7 +123,7 @@ input {
   color: var(--fg);
   padding: 0.5ex 1ex;
   border: var(--border) solid 1px;
-  font-family: "Aero", "Calibri", sans-serif;
+  font-family: "Calibri", sans-serif;
   font-size: 1rem;
 }
 
@@ -86,12 +156,6 @@ input:focus {
   outline: 0.25rem var(--hibg) solid;
 }
 
-#rules {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
 
 #finalClassification,
 #gpa,
@@ -100,16 +164,9 @@ input:focus {
   font-weight: bold;
 }
 
-#results {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  flex-wrap: wrap;
-}
-
-#results * {
-  margin: 0.2rem;
-}
+/*********************************************
+ * SHARE INDICATION
+ *********************************************/
 
 #copyzone {
   display: flex;
@@ -121,13 +178,9 @@ input:focus {
 }
 
 
-@media screen and (min-width: 30rem) {
-  main, header {
-    max-width: 30em;
-    position: relative;
-    margin: 0 auto;
-  }
-}
+/*********************************************
+ * CORNER SOURCE LINK
+ *********************************************/
 
 #source {
   display: block;
@@ -137,21 +190,27 @@ input:focus {
   height: 10em;
   overflow: hidden;
 }
+
 #source a {
   font-weight: bold;
   display: block;
-  background: #621360;
+  background: var(--corner);
   padding: 3em 10em 1ex;
-  color: white;
-  transform: translateX(50%) rotate(45deg);
+  color: var(--bg);
+  transform: translateX(50%) rotate(45deg) scale(0.75);
   transform-origin: top center;
   text-decoration: none;
 }
+
+/*********************************************
+ * SHARE
+ *********************************************/
 
 #share {
   display: flex;
   flex-direction: column;
 }
+
 #share p { margin-top: 0; }
 #share input { font-size: 1rem; }
 #showingShared {
@@ -159,35 +218,33 @@ input:focus {
   text-align: center;
 }
 
+/*********************************************
+ * RULE HIGHLIGHTING
+ *********************************************/
+
 [data-highlight]:hover,
 .highlight {
-  background-color: var(--highlight);
+  transition: var(--trans);
+  background: var(--highlight);
 }
 
-@media screen and (min-width: 70rem) {
-  main, header {
-    max-width: 70rem;
-    position: relative;
-    margin: 0 auto;
-  }
+[data-highlight] {
+  transition: var(--trans);
+  padding: 0.5em 1em;
+  margin: -0.5em -1em;
+  border-radius: 0.5em;
+}
 
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-around;
-  }
+dt {
+  margin-left: -1em;
+  padding: 1em 0 0.5em 1em;
+  border-radius: 0.5em 0.5em 0 0;
+  transition: var(--trans);
+}
 
-  header {
-    text-align: center;
-  }
-
-  section {
-    display: inline-block;
-    width: 30rem;
-  }
-
-  #results {
-    width: 100%;
-  }
+dd {
+  margin-left: -1em;
+  padding: 0 1em 1em 2em;
+  border-radius: 0 0 0.5em 0.5em;
+  transition: var(--trans);
 }

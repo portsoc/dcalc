@@ -5,11 +5,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#621360" />
-<link rel="apple-touch-icon" href="/img/192.png" />
-
-<nav id="source">
-  <a href="https://github.com/portsoc/dcalc">Source</a>
-</nav>
+<link rel="apple-touch-icon" href="img/192.png" />
+<link rel="icon" href="img/192.png" />
 
 <header>
   <h1>Portsmouth Degree&nbsp;Calculator</h1>
@@ -24,6 +21,7 @@
       <p>This is the best result from Rules A, B and C.</p>
     </div>
     <div id=rules>
+      <h2>Rules:</h2>
       <p data-highlight=".rule-a-defn">Rule A: <span id="ruleA">n/a</span></p>
       <p data-highlight=".rule-b-defn">Rule B: <span id="ruleB">n/a</span></p>
       <p data-highlight=".rule-c-defn">Rule C: <span id="ruleC">n/a</span></p>
@@ -42,68 +40,70 @@
     <h2>Second Year</h2>
     <div class="module">
       <input id="l5mark1" type="number" min="0" max="100" tabindex="1" placeholder="0" autofocus>
-      <input id="l5name1" type="text" tabindex="21" placeholder="module 1 name">
+      <input id="l5name1" type="text" tabindex="2" list="module-list" placeholder="module 1 name">
     </div>
     <div class="module">
-      <input id="l5mark2" type="number" min="0" max="100" tabindex="2" placeholder="0">
-      <input id="l5name2" type="text" tabindex="22" placeholder="module 2 name">
+      <input id="l5mark2" type="number" min="0" max="100" tabindex="3" placeholder="0">
+      <input id="l5name2" type="text" tabindex="4" list="module-list" placeholder="module 2 name">
     </div>
     <div class="module">
-      <input id="l5mark3" type="number" min="0" max="100" tabindex="3" placeholder="0">
-      <input id="l5name3" type="text" tabindex="23" placeholder="module 3 name">
+      <input id="l5mark3" type="number" min="0" max="100" tabindex="5" placeholder="0">
+      <input id="l5name3" type="text" tabindex="6" list="module-list" placeholder="module 3 name">
     </div>
     <div class="module">
-      <input id="l5mark4" type="number" min="0" max="100" tabindex="4" placeholder="0">
-      <input id="l5name4" type="text" tabindex="24" placeholder="module 4 name">
+      <input id="l5mark4" type="number" min="0" max="100" tabindex="7" placeholder="0">
+      <input id="l5name4" type="text" tabindex="8" list="module-list" placeholder="module 4 name">
     </div>
     <div class="module">
-      <input id="l5mark5" type="number" min="0" max="100" tabindex="5" placeholder="0">
-      <input id="l5name5" type="text" tabindex="25" placeholder="module 5 name">
+      <input id="l5mark5" type="number" min="0" max="100" tabindex="9" placeholder="0">
+      <input id="l5name5" type="text" tabindex="10" list="module-list" placeholder="module 5 name">
     </div>
     <div class="module">
-      <input id="l5mark6" type="number" min="0" max="100" tabindex="6" placeholder="0">
-      <input id="l5name6" type="text" tabindex="26" placeholder="module 6 name">
+      <input id="l5mark6" type="number" min="0" max="100" tabindex="11" placeholder="0">
+      <input id="l5name6" type="text" tabindex="12" list="module-list" placeholder="module 6 name">
     </div>
   </section>
-
 
   <section id="l6">
     <h2>Final Year</h2>
     <div class="module">
-      <input id="l6mark1" type="number" tabindex="7" min="0" max="100" placeholder="0">
-      <input id="l6name1" type="text" tabindex="27" placeholder="module name">
+      <input id="l6mark1" type="number" tabindex="13" min="0" max="100" placeholder="0">
+      <input id="l6name1" type="text" tabindex="14" list="module-list" placeholder="module 1 name">
     </div>
     <div class="module">
-      <input id="l6mark2" type="number" tabindex="8" min="0" max="100" placeholder="0">
-      <input id="l6name2" type="text" tabindex="28" placeholder="module name">
+      <input id="l6mark2" type="number" tabindex="15" min="0" max="100" placeholder="0">
+      <input id="l6name2" type="text" tabindex="16" list="module-list" placeholder="module 2 name">
     </div>
     <div class="module">
-      <input id="l6mark3" type="number" tabindex="9" min="0" max="100" placeholder="0">
-      <input id="l6name3" type="text" tabindex="29" placeholder="module name">
+      <input id="l6mark3" type="number" tabindex="17" min="0" max="100" placeholder="0">
+      <input id="l6name3" type="text" tabindex="18" list="module-list" placeholder="module 3 name">
     </div>
     <div class="module">
-      <input id="l6mark4" type="number" tabindex="10" min="0" max="100" placeholder="0">
-      <input id="l6name4" type="text" tabindex="30" placeholder="module name">
+      <input id="l6mark4" type="number" tabindex="19" min="0" max="100" placeholder="0">
+      <input id="l6name4" type="text" tabindex="20" list="module-list" placeholder="module 4 name">
     </div>
     <div class="module">
-      <input id="fyp" type="number" tabindex="11" min=0 max=100 placeholder="0">
+      <input id="fyp" type="number" tabindex="21" min=0 max=100 placeholder="0">
       <span>Project</span>
     </div>
   </section>
 
+  <datalist id="module-list">
+  </datalist>
+
   <section id="share">
     <h2>Share my marks</h2>
-    <p>Send the link below to your friends and parents so they can see your expected grade.
-      They will see a copy of all the data entered above.</p>
+    <p>If you'd like to share your award indication with friends or family, copy this link and send it to them.</p>
     <div id="copyzone">
       <input id="shareLink" type="text" tabindex="40" readonly>
       <button id="copy" tabindex="41">Copy</button>
     </div>
   </section>
 
+
   <section id="rule-explanation">
     <h2>Rule Definitions</h2>
-    <p>Source: <a href="https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf">Examination & Assessment Regulations: Boards of Examiners</a></p>
+    <p>Source: <a href="https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf">Examination & Assessment Regs: Boards of Examiners</a></p>
     <dl>
       <dt class="rule-a-defn">Rule A
       <dd class="rule-a-defn">The classification of the weighted mean of all relevant credits at Level 5 and all relevant credits at Level 6 in the ratio of 40:60 respectively after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
@@ -112,12 +112,14 @@
       <dt class="rule-c-defn">Rule C
       <dd class="rule-c-defn">The minimum classification in which more than 50% of the combined relevant credits at Level 5 and Level 6 were attained after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
     </dl>
-    <p>Per point 3.2 of the regulations, weighted mean averages are rounded to integers for the purpose of the above rules.
+    <p>Weighted mean averages are rounded to integers when applying these rules, as required in section 3.2 of the above regulations.
   </section>
 
 </main>
 
-<script src="app.js"></script>
-<script src="js/rules.js"></script>
-<script src="js/ui.js"></script>
-<script src="js/validity.js"></script>
+<nav id="source">
+  <a href="https://github.com/portsoc/dcalc">Source</a>
+</nav>
+
+<script src="js/service-worker-loader.js" type="module"></script>
+<script src="js/ui.js" type="module"></script>

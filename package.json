@@ -11,12 +11,20 @@
     "url": "https://github.com/portsoc/dcalc.git"
   },
   "author": "Rich Boakes (@ear1grey) | Jacek Kopecký (@jacekkopecky)",
-  "license": "MIT",
   "bugs": {
     "url": "https://github.com/portsoc/dcalc/issues"
   },
   "homepage": "https://github.com/portsoc/dcalc#readme",
   "devDependencies": {
     "jest": "^24.8.0"
+    "eslint": "^7.32.0",
+    "eslint-config-portsoc": "^0.8.2"
+  },
+  "eslintConfig": {
+    "extends": "portsoc",
+    "root": true,
+    "env": {
+      "browser": true
+    }
   }
 }
