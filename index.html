@@ -121,5 +121,17 @@
   <a href="https://github.com/portsoc/dcalc">Source</a>
 </nav>
 
+<template id="ruleACalcExplained">
+    <dd class="rule-a-defn" id="ruleAExp">In your case, we ignore your grade of <span class="l5-lowest-grade"></span> from Level 5 and your grade of <span class="l6-lowest-grade"></span> from Level 6. This means your Level 5 grade is <span class="l5-calc"></span> and your Level 6 grade is <span class="l6-calc"></span>. Combined, this gives you an overall grade of (<span class="l5-mean"></span> * 0.4)+(<span class="l6-mean"></span> * 0.6) = <span class="rule-a"></span>.
+</template>
+
+<template id="ruleBCalcExplained">
+    <dd class="rule-b-defn" id="ruleBExp">In your case, we ignore your grade of <span class="l6-lowest-grade"></span>. This means your overall grade is <span class="l6-calc"></span>.
+</template>
+
+<template id="ruleCCalcExplained">
+    <dd class="rule-c-defn" id="ruleCExp">In your case, we choose the first grade after the halfway point. Your grades are <span id="ruleCCalc"></span>. This means that your grade is the first grade past the halfway point, <span id="ruleCCalcResult"></span>. 
+</template>
+
 <script src="js/service-worker-loader.js" type="module"></script>
 <script src="js/ui.js" type="module"></script>
