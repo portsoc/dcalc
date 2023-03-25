@@ -8,7 +8,7 @@ function init() {
   const displayText = document.getElementById("display-text");
   inputField.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
-      if (!inputField.value.startsWith("UP")) {
+      if (!inputField.value.toUpperCase().startsWith("UP")) {
         displayText.textContent = "Input must start with 'UP'!";
         return;
       }
