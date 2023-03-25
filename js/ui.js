@@ -4,6 +4,16 @@ import * as validity from './validity.js';
 function init() {
   const query = parseQueryParams();
 
+  const logButton = document.getElementById("submit-up");
+  logButton.addEventListener("click", function() {
+    const inputField = document.getElementById("up-input");
+    if (!inputField.value.startsWith("UP")) {
+      console.log("Input must start with 'UP'!");
+    return;
+    }
+    console.log(inputField.value);
+  });
+
   const inputs = document.querySelectorAll('input[type="number"]');
   for (const input of inputs) {
     input.addEventListener('input', recalculate);
