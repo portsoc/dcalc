@@ -107,15 +107,35 @@ section {
   flex-grow: 1;
 }
 
+ul .range-input{
+  width: 100%;
+}
 
-.module :first-child {
+.module output{
+  text-align: center;
+  justify-content: center;
+  width: 50px;
+  display: inline-block;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+
+
+ul {
+  padding: 0;
+}
+
+
+
+/* .module :first-child {
   flex-grow: 0;
   margin-right: .5rem;
-}
+} */
 
-.module span {
+/* .module span {
   padding: 0.5ex 1ex;
-}
+} */
 
 
 input {

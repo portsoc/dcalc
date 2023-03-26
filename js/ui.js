@@ -9,6 +9,12 @@ function init() {
     input.addEventListener('input', recalculate);
   }
 
+  const rangeSlider = document.getElementById('l5mark1');
+  const sliderValue = document.getElementById('15mark1output');
+  rangeSlider.addEventListener('input', () => {
+    sliderValue.textContent = rangeSlider.value;
+  });
+
   const allInputs = document.querySelectorAll('.module input');
   for (const input of allInputs) {
     input.addEventListener('input', createShareLink);
