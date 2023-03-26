@@ -120,7 +120,15 @@ ul .range-input{
   border: 1px solid #ccc;
 }
 
-
+.range-input::-webkit-slider-thumb {
+  background-color: #621360;
+}
+.range-input::-moz-range-thumb {
+  background-color: #621360;
+}
+.range-input::-ms-thumb {
+  background-color: #621360;
+} /*idk why this doesn't work */
 
 ul {
   padding: 0;
