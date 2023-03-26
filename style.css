@@ -138,6 +138,7 @@ input::selection {
 
 input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
   text-align: right;
   font-size: var(--numsize);
   width: 4ch;
@@ -162,6 +163,18 @@ input:focus {
 #rules span {
   color: var(--hibg);
   font-weight: bold;
+}
+
+
+.lock-button {
+  background-image: url("./img/lock-icon.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  width: flex; 
+  height: flex; 
+  border: none;
+  cursor: pointer;
 }
 
 /*********************************************
@@ -247,4 +260,8 @@ dd {
   padding: 0 1em 1em 2em;
   border-radius: 0 0 0.5em 0.5em;
   transition: var(--trans);
+}
+
+#rule-explanation a:link {
+  color: #3366BB;
 }
