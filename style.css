@@ -138,6 +138,7 @@ input::selection {
 
 input[type='number'] {
   -moz-appearance: textfield;
+  appearance: textfield;
   text-align: right;
   font-size: var(--numsize);
   width: 4ch;
