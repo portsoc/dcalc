@@ -12,7 +12,7 @@ function init() {
         displayText.textContent = "Input must start with 'UP'!";
         return;
       }
-      displayText.textContent = "Loading course data for: " + inputField.value;
+      displayText.textContent = "Loading course data for: " + inputField.value.toUpperCase();
     }
   });
 
