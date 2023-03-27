@@ -192,14 +192,17 @@ function isAnyMarkUnder40(marks) {
     marks.l6.some(m => m < 40);
 }
 
-function gatherMarksFromPage() { /// THIS FUNCTION NEEDS REWORKING SO THAT IT TAKES OUTPUTS FROM THE RANGE SLIDERS
+
+/// THIS FUNCTION NEEDS REWORKING SO THAT IT TAKES OUTPUTS FROM THE RANGE SLIDERS
+// tried working on it then my module inputs broke again so I can't work on it anymore...
+async function gatherMarksFromPage() {
   const retval = {
     l5: [],
     l6: [],
     fyp: null,
   };
 
-  const l5Inputs = document.querySelectorAll('#l5 input[type="number"]');
+  const l5Inputs = document.querySelectorAll('#l5 .range-input');
   for (const input of l5Inputs) {
     if (input.value === '') {
       console.log('no data', input);
@@ -212,7 +215,7 @@ function gatherMarksFromPage() { /// THIS FUNCTION NEEDS REWORKING SO THAT IT TA
     console.error('we do not have enough l5 inputs!');
   }
 
-  const l6Inputs = document.querySelectorAll('#l6 input:not(#fyp)[type="number"]');
+  const l6Inputs = document.querySelectorAll('#l6 .range-input:not(#fyp)');
   for (const input of l6Inputs) {
     if (input.value === '') {
       console.log('no data', input);
@@ -234,6 +237,7 @@ function gatherMarksFromPage() { /// THIS FUNCTION NEEDS REWORKING SO THAT IT TA
 
   return retval;
 }
+
 
 // query parsing functions, adapted from stackoverflow
 function parseQueryParams() {
