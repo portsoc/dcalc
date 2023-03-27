@@ -192,7 +192,7 @@ function isAnyMarkUnder40(marks) {
     marks.l6.some(m => m < 40);
 }
 
-function gatherMarksFromPage() {
+function gatherMarksFromPage() { /// THIS FUNCTION NEEDS REWORKING SO THAT IT TAKES OUTPUTS FROM THE RANGE SLIDERS
   const retval = {
     l5: [],
     l6: [],
