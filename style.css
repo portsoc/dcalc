@@ -104,18 +104,19 @@ section {
 }
 
 .module>* {
-  flex-grow: 1;
+  flex-grow: 0.33;
 }
 
-.range-input{
+section .range-input {
+  position: relative;
   width: 100%;
+  margin: 0;
 }
 
 .module output{
   text-align: center;
   justify-content: center;
-  width: 50px;
-  display: inline-block;
+  width: 1px;
   padding: 5px;
   border: 1px solid #ccc;
 }
