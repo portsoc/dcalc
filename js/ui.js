@@ -59,6 +59,7 @@ function init() {
     lockButtons[i].addEventListener('click', () => {
       lockButtons[i].classList.toggle('locked');
       rangeSliders[i].disabled = !rangeSliders[i].disabled;
+      numberInputs[i].disabled = !numberInputs[i].disabled;
     });
   }
   
