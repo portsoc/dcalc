@@ -147,8 +147,10 @@ function loadSavedMarks() {
   }
 }
 
-function recalculate() {
-  const marks = gatherMarksFromPage();
+// altering the range sliders inputt
+
+async function recalculate() {
+  const marks = await gatherMarksFromPage();
 
   if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
@@ -192,20 +194,15 @@ function isAnyMarkUnder40(marks) {
     marks.l6.some(m => m < 40);
 }
 
-
-function gatherMarksFromPage() {
+async function gatherMarksFromPage() {
   const retval = {
     l5: [],
     l6: [],
     fyp: null,
   };
 
-  const l5Inputs = document.querySelectorAll('#l5 input[type="number"]');
+  const l5Inputs = document.querySelectorAll('#l5 input[type="range"]');
   for (const input of l5Inputs) {
-    if (input.value === '') {
-      console.log('no data', input);
-      return null;
-    }
     retval.l5.push(Number(input.value));
   }
 
@@ -213,12 +210,8 @@ function gatherMarksFromPage() {
     console.error('we do not have enough l5 inputs!');
   }
 
-  const l6Inputs = document.querySelectorAll('#l6 input:not(#fyp)[type="number"]');
+  const l6Inputs = document.querySelectorAll('#l6 input:not(#fyp)[type="range"]');
   for (const input of l6Inputs) {
-    if (input.value === '') {
-      console.log('no data', input);
-      return null;
-    }
     retval.l6.push(Number(input.value));
   }
 
@@ -236,6 +229,8 @@ function gatherMarksFromPage() {
   return retval;
 }
 
+
+/// end of range sliders inputting altering
 
 // query parsing functions, adapted from stackoverflow
 function parseQueryParams() {
