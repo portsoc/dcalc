@@ -166,47 +166,18 @@ section {
 }
 
 .module>* {
-  flex-grow: 0.33;
-}
-
-section .range-input {
-  position: relative;
-  width: 100%;
-  margin: 0;
-}
-
-.module output{
-  text-align: center;
-  justify-content: center;
-  width: 1px;
-  padding: 5px;
-  border: 1px solid #ccc;
-}
-
-.range-input::-webkit-slider-thumb {
-  background-color: #621360;
-}
-.range-input::-moz-range-thumb {
-  background-color: #621360;
-}
-.range-input::-ms-thumb {
-  background-color: #621360;
-} /*idk why this doesn't work */
-
-ul {
-  padding: 0;
+  flex-grow: 1;
 }
 
 
-
-/* .module :first-child {
+.module :first-child {
   flex-grow: 0;
   margin-right: .5rem;
-} */
+}
 
-/* .module span {
+.module span {
   padding: 0.5ex 1ex;
-} */
+}
 
 
 input {
@@ -254,18 +225,6 @@ input:focus {
 #rules span {
   color: var(--hibg);
   font-weight: bold;
-}
-
-
-.lock-button {
-  background-image: url("./img/lock-icon.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: center;
-  width: flex; 
-  height: flex; 
-  border: none;
-  cursor: pointer;
 }
 
 /*********************************************
@@ -351,8 +310,4 @@ dd {
   padding: 0 1em 1em 2em;
   border-radius: 0 0 0.5em 0.5em;
   transition: var(--trans);
-}
-
-#rule-explanation a:link {
-  color: #3366BB;
 }
