@@ -41,15 +41,16 @@ function init() {
   //Locking button functionality and marks displayed functionality combined:
   //
   const rangeSliders = document.querySelectorAll('input[type="range"]');
-  const sliderValues = document.querySelectorAll('output');
   const lockButtons = document.querySelectorAll('.lock-button');
   
   for (let i = 0; i < rangeSliders.length; i++) {
+    const sliderValue = rangeSliders[i].parentNode.querySelector('input[type="number"]');
+    
     rangeSliders[i].addEventListener('input', () => {
       if (!lockButtons[i].classList.contains('locked')) {
-        sliderValues[i].textContent = rangeSliders[i].value;
+        sliderValue.value = rangeSliders[i].value;
       } else {
-        rangeSliders[i].value = sliderValues[i].textContent;
+        rangeSliders[i].value = sliderValue.value;
       }
     });
     
@@ -58,6 +59,7 @@ function init() {
       rangeSliders[i].disabled = !rangeSliders[i].disabled;
     });
   }
+  
 
   /// END of button and slider section
 
