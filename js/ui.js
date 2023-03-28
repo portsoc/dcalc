@@ -46,7 +46,7 @@ function init() {
   
   for (let i = 0; i < rangeSliders.length; i++) {
     rangeSliders[i].addEventListener('input', () => {
-      if (!lockButtons[i].classList.contains('locked')) {
+      if (!lockButtons[i].classList.contains('disabled')) {
         numberInputs[i].value = rangeSliders[i].value;
       }
       rangeSliders[i].value = numberInputs[i].value;
@@ -57,12 +57,11 @@ function init() {
     });
     
     lockButtons[i].addEventListener('click', () => {
-      lockButtons[i].classList.toggle('locked');
+      lockButtons[i].classList.toggle('disabled');
       rangeSliders[i].disabled = !rangeSliders[i].disabled;
       numberInputs[i].disabled = !numberInputs[i].disabled;
     });
   }
-  
 
   /// END of button and slider section
 
@@ -98,6 +97,8 @@ function init() {
   validity.init();
   loadModules();
 }
+
+
 
 async function loadModules() {
   try {

@@ -183,6 +183,10 @@ section .range-input {
   margin: 0;
 }
 
+input[type="number"]:disabled {
+  color: gray;
+}
+
 .module output{
   text-align: center;
   justify-content: center;
