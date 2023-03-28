@@ -41,17 +41,19 @@ function init() {
   //Locking button functionality and marks displayed functionality combined:
   //
   const rangeSliders = document.querySelectorAll('input[type="range"]');
+  const numberInputs = document.querySelectorAll('input[type="number"]');
   const lockButtons = document.querySelectorAll('.lock-button');
   
   for (let i = 0; i < rangeSliders.length; i++) {
-    const sliderValue = rangeSliders[i].parentNode.querySelector('input[type="number"]');
-    
     rangeSliders[i].addEventListener('input', () => {
       if (!lockButtons[i].classList.contains('locked')) {
-        sliderValue.value = rangeSliders[i].value;
-      } else {
-        rangeSliders[i].value = sliderValue.value;
+        numberInputs[i].value = rangeSliders[i].value;
       }
+      rangeSliders[i].value = numberInputs[i].value;
+    });
+    
+    numberInputs[i].addEventListener('input', () => {
+      rangeSliders[i].value = numberInputs[i].value;
     });
     
     lockButtons[i].addEventListener('click', () => {
