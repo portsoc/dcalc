@@ -41,21 +41,25 @@ function init() {
   //Locking button functionality and marks displayed functionality combined:
   //
   const rangeSliders = document.querySelectorAll('input[type="range"]');
-  const sliderValues = document.querySelectorAll('output');
+  const numberInputs = document.querySelectorAll('input[type="number"]');
   const lockButtons = document.querySelectorAll('.lock-button');
   
   for (let i = 0; i < rangeSliders.length; i++) {
     rangeSliders[i].addEventListener('input', () => {
-      if (!lockButtons[i].classList.contains('locked')) {
-        sliderValues[i].textContent = rangeSliders[i].value;
-      } else {
-        rangeSliders[i].value = sliderValues[i].textContent;
+      if (!lockButtons[i].classList.contains('disabled')) {
+        numberInputs[i].value = rangeSliders[i].value;
       }
+      rangeSliders[i].value = numberInputs[i].value;
+    });
+    
+    numberInputs[i].addEventListener('input', () => {
+      rangeSliders[i].value = numberInputs[i].value;
     });
     
     lockButtons[i].addEventListener('click', () => {
-      lockButtons[i].classList.toggle('locked');
+      lockButtons[i].classList.toggle('disabled');
       rangeSliders[i].disabled = !rangeSliders[i].disabled;
+      numberInputs[i].disabled = !numberInputs[i].disabled;
     });
   }
 
@@ -93,6 +97,8 @@ function init() {
   validity.init();
   loadModules();
 }
+
+
 
 async function loadModules() {
   try {

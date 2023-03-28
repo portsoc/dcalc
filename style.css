@@ -169,10 +169,22 @@ section {
   flex-grow: 0.33;
 }
 
+section input[type="number"]{
+  text-align: center;
+  justify-content: center;
+  width: 1px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
 section .range-input {
   position: relative;
   width: 100%;
   margin: 0;
+}
+
+input[type="number"]:disabled {
+  color: gray;
 }
 
 .module output{
