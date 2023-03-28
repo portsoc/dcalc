@@ -16,7 +16,7 @@ function init() {
     }
   });
 
-  const inputs = document.querySelectorAll('input[type="number"]');
+  const inputs = document.querySelectorAll('input[type="range"]');
   for (const input of inputs) {
     input.addEventListener('input', recalculate);
   }
