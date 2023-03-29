@@ -1,0 +1,172 @@
+<!doctype html>
+<title>Portsmouth Degree Calculator</title>
+<link rel=stylesheet href="style.css">
+<link rel="manifest" href="manifest.json">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#621360" />
+<link rel="apple-touch-icon" href="img/192.png" />
+<link rel="icon" href="img/192.png" />
+
+<header>
+  <h1>Portsmouth Degree&nbsp;Calculator</h1>
+</header>
+
+<main>
+
+  <section id="up-number-input">
+    <h2>Input your UP number to get your data:</h2>
+    <div class="input-container">
+      <input type="text" id="up-input" required="UP">
+      <label for="up-input" class="label">UPXXXXXXX</label>
+      <div class="underline"></div>
+    </div>
+    <p id="display-text">&nbsp;</p>
+  </section>
+
+  <section id="results">
+    <div>
+      <h2>Indication:</h2>
+      <p id="finalClassification">not enough data</span>.</p>
+      <p>This is the best result from Rules A, B and C.</p>
+    </div>
+    <div id=rules>
+      <h2>Rules:</h2>
+      <p data-highlight=".rule-a-defn">Rule A: <span id="ruleA">n/a</span></p>
+      <p data-highlight=".rule-b-defn">Rule B: <span id="ruleB">n/a</span></p>
+      <p data-highlight=".rule-c-defn">Rule C: <span id="ruleC">n/a</span></p>
+    </div>
+    <div>
+      <h2>GPA:</h2>
+      <p id="gpa">not enough data</span>.</p>
+    </div>
+  </section>
+
+
+  <section id="showingShared" style="display: none">
+    <h2>Showing shared marks. <a href="./">Edit my marks.</a></h2>
+  </section>
+
+  <section id="l5">
+  <h2>Second Year</h2>
+  <ul>
+    <div class="module">
+      <input id="l5name1" type="text" tabindex="2" list="module-list" placeholder="Module 1 name">
+      <output id="15mark1output">Grade</output>
+      <button class="lock-button" id="lock-15mark1"></button>
+    </div>
+    <input class="range-input" id="l5mark1" type="range" min="0" max="100" value="0" tabindex="1">
+
+    <div class="module">
+      <input id="l5name2" type="text" tabindex="4" list="module-list" placeholder="Module 2 name">
+      <output id="15mark2output">Grade</output>
+      <button class="lock-button" id="lock-15mark2"></button>
+    </div>
+    <input class="range-input" id="l5mark2" type="range" min="0" max="100" value="0" tabindex="3">
+
+    <div class="module">
+      <input id="l5name3" type="text" tabindex="6" list="module-list" placeholder="Module 3 name">
+      <output id="15mark3output">Grade</output>
+      <button class="lock-button" id="lock-15mark3"></button>
+    </div>
+    <input class="range-input" id="l5mark3" type="range" min="0" max="100" value="0" tabindex="5">
+
+    <div class="module">
+      <input id="l5name4" type="text" tabindex="8" list="module-list" placeholder="Module 4 name">
+      <output id="15mark4output">Grade</output>
+      <button class="lock-button" id="lock-15mark4"></button>
+    </div>
+    <input class="range-input" id="l5mark4" type="range" min="0" max="100" value="0" tabindex="7">
+
+    <div class="module">
+      <input id="l5name5" type="text" tabindex="10" list="module-list" placeholder="Module 5 name">
+      <output id="15mark5output">Grade</output>
+      <button class="lock-button" id="lock-15mark5"></button>
+    </div>
+    <input class="range-input" id="l5mark5" type="range" min="0" max="100" value="0" tabindex="9">
+
+    <div class="module">
+      <input id="l5name6" type="text" tabindex="12" list="module-list" placeholder="Module 6 name">
+      <output id="15mark6output">Grade</output>
+      <button class="lock-button" id="lock-15mark6"></button>
+    </div>
+    <input class="range-input" id="l5mark6" type="range" min="0" max="100" value="0" tabindex="11">
+    
+  </ul>
+  </section>
+  
+  <section id="l6">
+  <h2>Final Year</h2>
+  <ul>
+    <div class="module">
+      <input id="l6name1" type="text" tabindex="14" list="module-list" placeholder="Module 1 name">
+      <output id="16mark1output">Grade</output>
+      <button class="lock-button" id="16mark1"></button>
+    </div>
+    <input class="range-input" id="l6mark1" type="range" min="0" max="100" value="0" tabindex="13">
+
+    <div class="module">
+      <input id="l6name2" type="text" tabindex="16" list="module-list" placeholder="Module 2 name">
+      <output id="16mark2output">Grade</output>
+      <button class="lock-button" id="16mark2"></button>
+    </div>
+    <input class="range-input" id="l6mark2" type="range" min="0" max="100" value="0" tabindex="15">
+
+    <div class="module">
+      <input id="l6name3" type="text" tabindex="18" list="module-list" placeholder="Module 3 name">
+      <output id="16mar34output">Grade</output>
+      <button class="lock-button" id="16mark3"></button>
+    </div>
+    <input class="range-input" id="l6mark3" type="range" min="0" max="100" value="0" tabindex="17">
+
+    <div class="module">
+      <input id="l6name4" type="text" tabindex="20" list="module-list" placeholder="Module 4 name">
+      <output id="16mark4output">Grade</output>
+      <button class="lock-button" id="16mark4"></button>
+    </div>
+    <input class="range-input" id="l6mark4" type="range" min="0" max="100" value="0" tabindex="19">
+
+    <div class="module">
+      <span><b>Project</b></span>
+      <output for="fyp">Grade</output>
+      <button class="lock-button" id="16mark4"></button>
+    </div>
+    <input class="range-input" id="fyp" type="range" min="0" max="100" value="0" tabindex="21">
+  </ul>
+  </section>
+
+  <datalist id="module-list">
+  </datalist>
+
+  <section id="share">
+    <h2>Share my marks</h2>
+    <p>If you'd like to share your award indication with friends or family, copy this link and send it to them.</p>
+    <div id="copyzone">
+      <input id="shareLink" type="text" tabindex="40" readonly>
+      <button id="copy" tabindex="41">Copy</button>
+    </div>
+  </section>
+
+
+  <section id="rule-explanation">
+    <h2>Rule Definitions</h2>
+    <p>Source: <a href="https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf">Examination & Assessment Regs: Boards of Examiners</a></p>
+    <dl>
+      <dt class="rule-a-defn"><b>Rule A</b>
+      <dd class="rule-a-defn">The classification of the weighted mean of all relevant credits at Level 5 and all relevant credits at Level 6 in the ratio of 40:60 respectively after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
+      <dt class="rule-b-defn"><b>Rule B</b>
+      <dd class="rule-b-defn">The classification of the weighted mean of all relevant credits at Level 6 after first discounting the marks in the worst 20 credits at Level 6.
+      <dt class="rule-c-defn"><b>Rule C</b>
+      <dd class="rule-c-defn">The minimum classification in which more than 50% of the combined relevant credits at Level 5 and Level 6 were attained after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6.
+    </dl>
+    <p>Weighted mean averages are rounded to integers when applying these rules, as required in section 3.2 of the above regulations.
+  </section>
+
+</main>
+
+<nav id="source">
+  <a href="https://github.com/portsoc/dcalc">Source</a>
+</nav>
+
+<script src="js/service-worker-loader.js" type="module"></script>
+<script src="js/ui.js" type="module"></script>
