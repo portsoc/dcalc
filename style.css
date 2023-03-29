@@ -280,6 +280,12 @@ input:focus {
   cursor: pointer;
 }
 
+#ClearButtonDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*********************************************
  * SHARE INDICATION
  *********************************************/
