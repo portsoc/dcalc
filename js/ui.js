@@ -21,25 +21,6 @@ function init() {
     input.addEventListener('input', recalculate);
   }
 
-
-  //marks displayed on page
-  //Attempt 1 (only works for first module)
-  // const rangeSlider = document.getElementById('l5mark1');
-  // const sliderValue = document.getElementById('15mark1output');
-  // rangeSlider.addEventListener('input', () => {
-  //   sliderValue.textContent = rangeSlider.value;
-  // });
-  //Attempt 2
-  // const rangeSliders = document.querySelectorAll('input[type="range"]');
-  // const sliderValues = document.querySelectorAll('output');
-  // for (let i = 0; i < rangeSliders.length; i++) {
-  //   rangeSliders[i].addEventListener('input', () => {
-  //     sliderValues[i].textContent = rangeSliders[i].value;
-  //   });
-  // }
-  //Tried getting a for-of loop to work and kept messing it up
-  //Locking button functionality and marks displayed functionality combined:
-  //
   const rangeSliders = document.querySelectorAll('input[type="range"]');
   const numberInputs = document.querySelectorAll('input[type="number"]');
   const lockButtons = document.querySelectorAll('.lock-button');
