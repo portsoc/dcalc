@@ -1,0 +1,24 @@
+{
+    "name": "dcalc",
+    "version": "0.0.1",
+    "description": "An improved version of Portsmouth Degree Calculator with Student Data",
+    "main": "index.html",
+    "type": "module",
+    "scripts": {
+      "start": "node svr.js"
+    },
+    "dependencies": {
+      "express": "^4.18.2",
+      "node-fetch": "^3.3.1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/NikBit101/dcalc_ext.git"
+    },
+    "author": "softeng@port.ac.uk",
+    "license": "ISC",
+    "bugs": {
+      "url": "https://github.com/NikBit101/dcalc_ext/issues"
+    },
+    "homepage": "https://github.com/NikBit101/dcalc_ext#readme"
+  }
