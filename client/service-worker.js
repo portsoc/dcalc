@@ -10,6 +10,7 @@ const cacheable = [
   './js/service-worker-loader.js',
   './style.css',
   './modules.txt',
+  './img/lock-icon.png',
   './img/192.png',
   './img/512.png',
 ];
@@ -48,8 +49,12 @@ function interceptFetch(evt) {
 async function prepareCache() {
   console.log('Cache: preparing');
   const c = await caches.open(CACHE);
-  await c.addAll(cacheable);
-  console.log('Cache: prepared');
+  try {
+    await c.addAll(cacheable);
+    console.log('Cache: prepared');
+  } catch (error) {
+    console.error('Cache: failed to prepare', error);
+  }
 }
 
 // install the event listsner so it can run in the background.

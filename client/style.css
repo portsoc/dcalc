@@ -169,10 +169,22 @@ section {
   flex-grow: 0.33;
 }
 
+section input[type="number"]{
+  text-align: center;
+  justify-content: center;
+  width: 1px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
 section .range-input {
   position: relative;
   width: 100%;
   margin: 0;
+}
+
+input[type="number"]:disabled {
+  color: gray;
 }
 
 .module output{
@@ -182,16 +194,6 @@ section .range-input {
   padding: 5px;
   border: 1px solid #ccc;
 }
-
-.range-input::-webkit-slider-thumb {
-  background-color: #621360;
-}
-.range-input::-moz-range-thumb {
-  background-color: #621360;
-}
-.range-input::-ms-thumb {
-  background-color: #621360;
-} /*idk why this doesn't work */
 
 ul {
   padding: 0;
@@ -235,10 +237,6 @@ input[type='number'] {
   width: 4ch;
 }
 
-input[type='text'][value=''] {
-  background: red;
-}
-
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -267,6 +265,50 @@ input:focus {
   border: none;
   cursor: pointer;
 }
+
+#ClearButtonDiv{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* following CSS is adapted from: https://uiverse.io/e-coders/nervous-chipmunk-49 */
+
+#ClearButton {
+  background-color: #FAFBFC;
+  border: 1px solid rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  box-shadow: rgba(27, 31, 35, 0.04) 0 1px 0, rgba(255, 255, 255, 0.25) 0 1px 0 inset;
+  box-sizing: border-box;
+  color: #24292E;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 16px;
+  transition: background-color 0.2s cubic-bezier(0.3, 0, 0.5, 1);
+  touch-action: manipulation;
+  vertical-align: middle;
+ }
+ 
+ #ClearButton:hover {
+  background-color: #F3F4F6;
+  transition-duration: 0.1s;
+ }
+ 
+ #ClearButton:disabled {
+  background-color: #FAFBFC;
+  border-color: rgba(27, 31, 35, 0.15);
+  color: #959DA5;
+  cursor: default;
+ }
+ 
+ #ClearButton:active {
+  background-color: #EDEFF2;
+  box-shadow: rgba(225, 228, 232, 0.2) 0 1px 0 inset;
+ }
+ 
+ #ClearButton:focus {
+  outline: 1px transparent;
+ }
 
 /*********************************************
  * SHARE INDICATION

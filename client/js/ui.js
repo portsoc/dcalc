@@ -19,46 +19,31 @@ function init() {
     }
   });
 
-  const inputs = document.querySelectorAll('input[type="number"]');
+  const inputs = document.querySelectorAll('input[type="range"]');
   for (const input of inputs) {
     input.addEventListener('input', recalculate);
   }
 
-
-  //marks displayed on page
-  //Attempt 1 (only works for first module)
-  // const rangeSlider = document.getElementById('l5mark1');
-  // const sliderValue = document.getElementById('15mark1output');
-  // rangeSlider.addEventListener('input', () => {
-  //   sliderValue.textContent = rangeSlider.value;
-  // });
-  //Attempt 2
-  // const rangeSliders = document.querySelectorAll('input[type="range"]');
-  // const sliderValues = document.querySelectorAll('output');
-  // for (let i = 0; i < rangeSliders.length; i++) {
-  //   rangeSliders[i].addEventListener('input', () => {
-  //     sliderValues[i].textContent = rangeSliders[i].value;
-  //   });
-  // }
-  //Tried getting a for-of loop to work and kept messing it up
-  //Locking button functionality and marks displayed functionality combined:
-  //
   const rangeSliders = document.querySelectorAll('input[type="range"]');
-  const sliderValues = document.querySelectorAll('output');
+  const numberInputs = document.querySelectorAll('input[type="number"]');
   const lockButtons = document.querySelectorAll('.lock-button');
   
   for (let i = 0; i < rangeSliders.length; i++) {
     rangeSliders[i].addEventListener('input', () => {
-      if (!lockButtons[i].classList.contains('locked')) {
-        sliderValues[i].textContent = rangeSliders[i].value;
-      } else {
-        rangeSliders[i].value = sliderValues[i].textContent;
+      if (!lockButtons[i].classList.contains('disabled')) {
+        numberInputs[i].value = rangeSliders[i].value;
       }
+      rangeSliders[i].value = numberInputs[i].value;
+    });
+    
+    numberInputs[i].addEventListener('input', () => {
+      rangeSliders[i].value = numberInputs[i].value;
     });
     
     lockButtons[i].addEventListener('click', () => {
-      lockButtons[i].classList.toggle('locked');
+      lockButtons[i].classList.toggle('disabled');
       rangeSliders[i].disabled = !rangeSliders[i].disabled;
+      numberInputs[i].disabled = !numberInputs[i].disabled;
     });
   }
 
@@ -96,6 +81,8 @@ function init() {
   validity.init();
   loadModules();
 }
+
+
 
 async function loadModules() {
   try {
@@ -150,8 +137,10 @@ function loadSavedMarks() {
   }
 }
 
-function recalculate() {
-  const marks = gatherMarksFromPage();
+// altering the range sliders inputt
+
+async function recalculate() {
+  const marks = await gatherMarksFromPage();
 
   if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
@@ -195,19 +184,15 @@ function isAnyMarkUnder40(marks) {
     marks.l6.some(m => m < 40);
 }
 
-function gatherMarksFromPage() {
+async function gatherMarksFromPage() {
   const retval = {
     l5: [],
     l6: [],
     fyp: null,
   };
 
-  const l5Inputs = document.querySelectorAll('#l5 input[type="number"]');
+  const l5Inputs = document.querySelectorAll('#l5 input[type="range"]');
   for (const input of l5Inputs) {
-    if (input.value === '') {
-      console.log('no data', input);
-      return null;
-    }
     retval.l5.push(Number(input.value));
   }
 
@@ -215,12 +200,8 @@ function gatherMarksFromPage() {
     console.error('we do not have enough l5 inputs!');
   }
 
-  const l6Inputs = document.querySelectorAll('#l6 input:not(#fyp)[type="number"]');
+  const l6Inputs = document.querySelectorAll('#l6 input:not(#fyp)[type="range"]');
   for (const input of l6Inputs) {
-    if (input.value === '') {
-      console.log('no data', input);
-      return null;
-    }
     retval.l6.push(Number(input.value));
   }
 
@@ -237,6 +218,9 @@ function gatherMarksFromPage() {
 
   return retval;
 }
+
+
+/// end of range sliders inputting altering
 
 // query parsing functions, adapted from stackoverflow
 function parseQueryParams() {
