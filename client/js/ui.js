@@ -1,5 +1,7 @@
 import * as rules from './rules.js';
 import * as validity from './validity.js';
+import getStudentData from './student-request.js';
+
 
 function init() {
   const query = parseQueryParams();
@@ -13,6 +15,7 @@ function init() {
         return;
       }
       displayText.textContent = "Loading course data for: " + inputField.value.toUpperCase();
+      getStudentData(inputField.value, displayText);
     }
   });
 
