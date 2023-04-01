@@ -85,15 +85,33 @@ function init() {
 }
 
 async function toggleTheme() {
-  const themeSwitch = document.getElementById("theme-switch");
+  const toggler = document.querySelector('#theme-switch'),
+        root = document.documentElement,
+        currentTheme = localStorage.getItem('theme') || 'dark';
 
-  themeSwitch.addEventListener("change", function() {
+  if (currentTheme === 'light') {
+    toggler.removeAttribute('checked');
+  } else {
+    toggler.checked = true;
+  }
+
+  root.setAttribute('data-theme', currentTheme);
+
+  toggler.addEventListener('change', handleToggle, false);
+
+  function handleToggle(e) {
     if (this.checked) {
-      console.log("Theme is dark");
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      console.log('Theme has been changed to: dark');
     } else {
-      console.log("Theme is light");
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      console.log('Theme has been changed to: light');
     }
-  });
+
+    console.log(`Current theme is: ${localStorage.getItem('theme')}`);
+  }
 }
 
 async function loadModules() {
