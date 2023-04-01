@@ -319,7 +319,7 @@ input:focus {
  * SHARE INDICATION
  *********************************************/
 
-#copyzone {
+ #copyzone {
   display: flex;
 }
 
@@ -328,10 +328,8 @@ input:focus {
   flex-direction: column;
   justify-content: space-around;
   flex-wrap: wrap;
-  margin-bottom: 1em;
+  margin: 1em auto;
   width: 50vw;
-  margin-left: auto;
-  margin-right: auto;
   text-align: center;
 }
 
@@ -340,10 +338,16 @@ input:focus {
   margin-right: 1ch;
 }
 
-#share p { margin-top: 0; }
-#share input { font-size: 1rem; }
+#share p {
+  margin-top: 0;
+}
+
+#share input {
+  font-size: 1rem;
+}
+
 #showingShared {
-  flex: 0 0 100%;
+  flex-basis: 100%;
   text-align: center;
 }
 
