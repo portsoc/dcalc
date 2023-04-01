@@ -256,7 +256,7 @@ input:focus {
 
 
 .lock-button {
-  background-image: url("./img/lock-icon.png");
+  background-image: url("./img/unlock-icon.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -264,6 +264,10 @@ input:focus {
   height: flex; 
   border: none;
   cursor: pointer;
+}
+
+.lock-button.disabled {
+  background-image: url("./img/lock-icon.png");
 }
 
 #ClearButtonDiv{
