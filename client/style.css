@@ -84,7 +84,7 @@ section {
 
 /*********************************************
  * UP NUMBER INPUT
- https://uiverse.io/Satwinder04/pink-bat-77
+ Adapted from - https://uiverse.io/Satwinder04/pink-bat-77
  *********************************************/
 
 #up-number-input{
@@ -347,6 +347,44 @@ input:focus {
   transform: translateX(50%) rotate(45deg) scale(0.75);
   transform-origin: top center;
   text-decoration: none;
+}
+
+/*********************************************
+ * THEME SWITCH CHECKBOX
+ *********************************************/
+
+ #theme-switch {
+  display: none;
+}
+
+label[for="theme-switch"] {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: relative;
+}
+
+label[for="theme-switch"]:after {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+
+#theme-switch:checked + label[for="theme-switch"] {
+  background-color: #333;
+}
+
+#theme-switch:checked + label[for="theme-switch"]:after {
+  left: 32px;
 }
 
 /*********************************************

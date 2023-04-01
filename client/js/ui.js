@@ -80,9 +80,21 @@ function init() {
 
   validity.init();
   loadModules();
+
+  toggleTheme();
 }
 
+async function toggleTheme() {
+  const themeSwitch = document.getElementById("theme-switch");
 
+  themeSwitch.addEventListener("change", function() {
+    if (this.checked) {
+      console.log("Theme is dark");
+    } else {
+      console.log("Theme is light");
+    }
+  });
+}
 
 async function loadModules() {
   try {
