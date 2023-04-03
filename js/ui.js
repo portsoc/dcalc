@@ -1,7 +1,8 @@
 import * as rules from './rules.js';
 import * as validity from './validity.js';
 import getStudentData from './student-request.js';
-
+import http from 'http';
+import setupProxy from './proxy.js';
 
 function init() {
   const query = parseQueryParams();
@@ -266,4 +267,16 @@ function highlight(trigger, showHighlight) {
   }
 }
 
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'text/plain' });
+  res.end();
+});
+
+const middleware = setupProxy();
+server.on('request', middleware);
+
+server.listen(3000, () => {
+  console.log('Server listening on port 3000 with proxy enabled');
+});
 window.addEventListener('load', init);
