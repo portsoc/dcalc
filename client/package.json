@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Portsmouth Degree Calculator",
   "main": "index.html",
+  "type": "module",
   "scripts": {
     "lint": "eslint ."
   },
@@ -26,5 +27,11 @@
     "env": {
       "browser": true
     }
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
+    "http": "^0.0.1-security",
+    "http-proxy-middleware": "^2.0.6"
   }
 }

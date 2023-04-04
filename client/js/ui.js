@@ -2,7 +2,6 @@ import * as rules from './rules.js';
 import * as validity from './validity.js';
 import getStudentData from './student-request.js';
 
-
 function init() {
   const query = parseQueryParams();
 
@@ -295,5 +294,6 @@ function highlight(trigger, showHighlight) {
     target.classList.toggle('highlight', showHighlight);
   }
 }
+
 
 window.addEventListener('load', init);
