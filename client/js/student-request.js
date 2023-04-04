@@ -1,13 +1,25 @@
-export default async function getStudentData(id, label) {
-  const response = await fetch(`student/${id}`);
-  if (response.ok) {
-    const data = await response.json();
-    if (data === null) {
-      label.textContent = `Sorry, there is no data associated with ${id}`;
-    } else {
-      console.log(data);
-    }
-  } else {
-    throw new Error(response.Error);
+function getModules(student, id, label) {
+  // student does NOT exist, display warning message and cancel request
+  if (student.studentModules === null) {
+    console.log('Student data does not exist.');
+    label.textContent = `Sorry the student ${id} does not exist`;
+    return null;
   }
+
+  const sModules = student.studentModules.modules;
+  // eslint-disable-next-line no-restricted-syntax
+  for (const module in sModules) {
+    console.log(sModules[module]);
+  }
+}
+
+export default async function getStudentData(id, label) {
+  console.log(`Result: before`);
+  const route = `student/SOC/tutorial/${id.slice(2)}/`;
+  const response = await fetch(route);
+  const res = await response.json();
+  console.log(res);
+
+
+  const student = await getModules(res, id, label);
 }
