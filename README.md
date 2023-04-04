@@ -21,7 +21,7 @@ This new version implements the following added features:
 
 
 This is new version was developed by a group of Second Year, Software Engineering students:<br>
-[Will W](https://github.com/UP2021407), [Nikita C](https://github.com/NikBit101), [Marta R](https://github.com/m0urao), [Sint Lwin H](https://github.com/sint18), [Mark C](https://github.com/mark-chit), [Pablo B](https://github.com/PabloBeJ).
+[Will W](https://github.com/wgw0), [Nikita C](https://github.com/NikBit101), [Marta R](https://github.com/m0urao), [Sint Lwin H](https://github.com/sint18), [Mark C](https://github.com/mark-chit), [Pablo B](https://github.com/PabloBeJ).
 
 # Credits
 * It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
