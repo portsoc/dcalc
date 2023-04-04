@@ -1,35 +1,24 @@
 {
-  "name": "dcalc",
-  "version": "0.0.1",
-  "description": "Portsmouth Degree Calculator",
-  "main": "index.html",
+  "dependencies": {
+    "express": "^4.18.2",
+    "node-fetch": "^3.3.1"
+  },
   "type": "module",
   "scripts": {
-    "lint": "eslint ."
+    "start": "node server.js"
   },
+  "name": "dcalc_ext",
+  "description": "University of Portsmouth calculates final degree classification in three ways, and has recently added the Grade Point Average (GPA) to graduate's transcripts.  This app _indicates_ how module marks can combine to form a final degree classification, it also calculates an incicative GPA.",
+  "version": "1.0.0",
+  "main": "server.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/portsoc/dcalc.git"
+    "url": "git+https://github.com/NikBit101/dcalc_ext.git"
   },
-  "author": "softeng@port.ac.uk",
+  "author": "NikBit101",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/portsoc/dcalc/issues"
+    "url": "https://github.com/NikBit101/dcalc_ext/issues"
   },
-  "homepage": "https://github.com/portsoc/dcalc#readme",
-  "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-portsoc": "^0.8.2"
-  },
-  "eslintConfig": {
-    "extends": "portsoc",
-    "root": true,
-    "env": {
-      "browser": true
-    }
-  },
-  "dependencies": {
-    "http": "^0.0.1-security",
-    "http-proxy-middleware": "^2.0.6"
-  }
+  "homepage": "https://github.com/NikBit101/dcalc_ext#readme"
 }
