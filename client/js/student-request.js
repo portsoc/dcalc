@@ -1,7 +1,8 @@
-function getModules(student) {
+function getModules(student, id, label) {
   // student does NOT exist, display warning message and cancel request
   if (student.studentModules === null) {
     console.log('Student data does not exist.');
+    label.textContent = `Sorry the student ${id} does not exist`;
     return null;
   }
 
@@ -20,6 +21,5 @@ export default async function getStudentData(id, label) {
   console.log(res);
 
 
-  const student = await getModules(res);
-  console.log(student);
+  const student = await getModules(res, id, label);
 }
