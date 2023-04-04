@@ -445,6 +445,17 @@ dd {
   transition: var(--trans);
 }
 
+#rule-explanation{
+  width: 100%;
+  /* display: flex;
+  flex-wrap: wrap; */
+}
+
+#rule-list > * {
+  flex: 1 1 300px;
+  margin: 10px;
+}
+
 #rule-explanation a:link {
   color: #3366BB;
 }
