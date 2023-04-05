@@ -5,7 +5,7 @@
   },
   "type": "module",
   "scripts": {
-    "start": "node server.js"
+    "start": "npm install && node server.js"
   },
   "name": "dcalc_ext",
   "description": "University of Portsmouth calculates final degree classification in three ways, and has recently added the Grade Point Average (GPA) to graduate's transcripts.  This app _indicates_ how module marks can combine to form a final degree classification, it also calculates an incicative GPA.",

@@ -19,7 +19,7 @@ app.all('*', async (req, res) => {
   const gatewayRequestUrl = gatewayUrl + route + data.years.sep22;
   
   try {
-    const response = await fetch(gatewayRequestUrl, headers);
+    const response = await fetch(gatewayRequestUrl, options);
     const responseData = await response.json();
     res.json(responseData);
   } catch (error) {

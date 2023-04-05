@@ -3,4 +3,5 @@
 headers.json
 config/headers.json
 ./config/headers.json
-node_modules
+/node_modules
+./node_modules
