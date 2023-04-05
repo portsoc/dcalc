@@ -1,28 +1,33 @@
 # Portsmouth Degree Calculator App
 
-University of Portsmouth calculates final degree classification in three ways, and has recently added the Grade Point Average (GPA) to graduate's transcripts.  This app _indicates_ how module marks can combine to form a final degree classification, it also calculates an incicative GPA.
+This project is a webapp that calculates a student's final degree classification and GPA by indicating how module marks can combine. It allows students to input their UP number and have their modules and achieved grades automatically inputted. Students can also set a target degree classification and find the minimum grades needed to achieve that target, with modules requiring extra work highlighted. The app also shows an average for second-year modules, which predicts the final year mark.
 
-If you're a student, it may be interesting to see how your current/predicted grades might affect your final classification.  Remember too, that it's not all about the grades - they may show capability, but they can never reflect who you are or how well you'll fit & contribute to any team.
+This is an improved version of [Portsoc's Dcalc](https://github.com/portsoc/dcalc), with new features and visual changes.
 
-[Try it now (http://soc.port.ac.uk/dcalc/)](http://soc.port.ac.uk/dcalc/)
+Ideally, this implementation will eventually be merged into the original and be available as a fully functioning webapp at that same web address. For now, to run this implementation:
 
-Please add suggestions & bug reports to the [issue list](https://github.com/portsoc/dcalc/issues).
+## Functionality
 
-# New and Improved!
+This implementation can be run locally.
 
-This is a new and improved version of the original [Portsoc's Dcalc](https://github.com/portsoc/dcalc).
-This new version implements the following added features:
-* The ability to input your UP number and have your modules and achieved grades automatically inputted.
-* You can set a target grade and figure out the minimum grades you need to achieve in each module to reach that target following the best rule for your given grades.
-* Modules that require extra work to bring your grade up are highlighted to you.
-* Average for your Second Year modules, which gives a prediction for your Final Year Mark.
-* As well as some lovely visual changes.
+To do so:
 
+1. You will need an API key to be able to make requests to the University API, as well as be connected to the University VPN.
 
+2. When you have cloned the repository locally, you need to add the API key to a `headers.json` file in the `config` directory.
 
-This is new version was developed by a group of Second Year, Software Engineering students:<br>
+3. Then you need to run `npm i express` to install the required `express` framework.
+
+4. After that is done ensure that your path is setup correctly in the `package.json` file to run the `openssl.cnf` file as well as the `server.js` file simultaneously.
+
+You will then be able to open the page on the `localhost` port it is set to.
+
+## Authors
+
+This current implementation was developed by a group of Second Year, Software Engineering students:
+
 [Will W](https://github.com/wgw0), [Nikita C](https://github.com/NikBit101), [Marta R](https://github.com/m0urao), [Sint Lwin H](https://github.com/sint18), [Mark C](https://github.com/mark-chit), [Pablo B](https://github.com/PabloBeJ).
 
-# Credits
-* It was designed and built by [Rich](https://github.com/ear1grey) & [Jacek](https://github.com/jacekkopecky) during four lectures.
-* Props to [Dan Harper](https://www.danharper.me/) who built a similar tool many years ago.  We are delighted to release Dan from the thankless task of keeping up with the uni regs!
+## Acknowledgments
+
+The original implementation was designed and built by [Dr Rich](https://github.com/ear1grey) & [Dr Jacek](https://github.com/jacekkopecky) during four lectures, this implementation is built off a fork of what they have built. The original can be found at: [http://soc.port.ac.uk/dcalc/](http://soc.port.ac.uk/dcalc/)
