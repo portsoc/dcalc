@@ -16,15 +16,12 @@ app.all('*', async (req, res) => {
   console.log(`Request: ${req.path}`);
   const route = req.path;
   const gatewayUrl = 'https://t-esbprep-apigw.port.ac.uk/gateway/BiDataWarehouseSitsCourseModuleAssessmentAPI';
-  const headers = options;
-  console.log(headers);
   const gatewayRequestUrl = gatewayUrl + route + data.years.sep22;
   
   try {
     const response = await fetch(gatewayRequestUrl, headers);
     const responseData = await response.json();
     res.json(responseData);
-    console.log(responseData);
   } catch (error) {
     res.status(500).json({ error: 'Internal server error' });
   }
