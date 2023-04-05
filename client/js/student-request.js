@@ -5,10 +5,22 @@ function getModules(student, id, label) {
     return null;
   }
 
+  const LEVEL_5 = [];
+
   const sModules = student.studentModules.modules;
-  // eslint-disable-next-line no-restricted-syntax
-  for (const module in sModules) {
-    console.log(sModules[module]);
+  // confirm all modules are from level 5
+  const is_LVLFive = Object.values(sModules).every(module => module.level === 5);
+  
+  // autofill the modules to "second year" list
+  if (is_LVLFive) {
+    for (const module in sModules) {
+      const modMarks = {
+        name: sModules[module].name,
+        level: sModules[module].level,
+        marks: sModules[module].marks
+      };
+      LEVEL_5.push(modMarks);
+    }
   }
 }
 
