@@ -42,8 +42,7 @@ function getModules(student, id, label) {
 export default async function getStudentData(id, label) {
   const route = `student/SOC/tutorial/${id.slice(2)}/`;
   const response = await fetch(route);
-  const res = await response.json();
-
-
-  const student = await getModules(res, id, label);
+  const { studentModules } = await response.json();
+  console.log({studentModules});
+  const student = await getModules({ studentModules }, id, label);
 }
