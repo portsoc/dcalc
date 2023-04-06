@@ -6,12 +6,19 @@ function getModules(student, id, label) {
   }
   label.textContent = `Module marks for ${id} have been loaded`;
 
-  const LEVEL_5 = [];
-
   const sModules = student.studentModules.modules;
-  // confirm all modules are from level 5
-  const is_LVLFive = Object.values(sModules).every(module => module.level === 5);
+  // confirm all modules are from level 5, skip level 4's
+  const is_LVLFive =
+  Object.values(sModules)
+    .slice(0, 6)
+    .some(module => module.level === 5)
+    &&
+  Object.values(sModules)
+    .slice(0, 6)
+    .every(module => module.level === 4 || module.level === 5);
+
   
+  console.log(is_LVLFive);
   // confirm whether module grades are from level 5 or 6
   if (is_LVLFive) {
     const LEVEL_5 = [];
