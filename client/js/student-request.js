@@ -27,8 +27,12 @@ function getModules(student, id, label) {
       const modSlider = document.querySelector(`#l5mark${i+1}`);
       const moduleMarksInput = document.querySelector(`#l5mark${i+1}output`);
       modNameInput.value = modMarks.name;
-      modSlider.value = modMarks.marks;
-      moduleMarksInput.value = modMarks.marks;
+      // check if marks exist for a specific module (i.e. not null)
+      if (modMarks.marks) {
+        console.log(modMarks.marks);
+        modSlider.value = modMarks.marks;
+        moduleMarksInput.value = modMarks.marks;
+      }
     });
     
     console.log(LEVEL_5);
