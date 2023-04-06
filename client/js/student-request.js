@@ -10,6 +10,7 @@ function getModules(student, id, label) {
 
   const sModules = student.studentModules.modules;
   // confirm all modules are from level 5
+  console.log(sModules);
   const is_LVLFive = Object.values(sModules).every(module => module.level === 5);
   
   // confirm whether module grades are from level 5 or 6
@@ -17,18 +18,20 @@ function getModules(student, id, label) {
     for (const module in sModules) {;
       const modMarks = {
         name: sModules[module].name,
+        level: sModules[module].level,
         marks: sModules[module].marks.agreedModuleMark
       };
       LEVEL_5.push(modMarks);
     }
-        
     // autofill the modules to "second year" list
     for (let i = 0; i < LEVEL_5.length-1; i++) {
       const module = LEVEL_5[i];
       const modNameInput = document.querySelector(`#l5name${(i+1)}`);
-      const moduleMarksInput = document.querySelector(`#l5mark${(i+1)}output`);
+      const modSlider = document.querySelector(`#l5mark${(i+1)}`);
+      const modMarksInput = document.querySelector(`#l5mark${(i+1)}output`);
       modNameInput.value = module.name;
-      moduleMarksInput.value = module.marks;
+      modSlider.value = module.marks;
+      modMarksInput.value = module.marks;
     }    
   }
   console.log(LEVEL_5);
