@@ -20,6 +20,15 @@ function getModules(student, id, label) {
   
   console.log(is_LVLFive);
 
+  const is_LVL6 =
+  Object.values(sModules)
+    .slice(0, 5)
+    .some(module => module.level === 6)
+    &&
+  Object.values(sModules)
+    .slice(0, 5)
+    .every(module => module.level === 4 || module.level === 5 || module.level === 6);
+
   // confirm whether module grades are from level 5 or 6
   if (is_LVLFive) {
     const LEVEL_5 = [];
@@ -44,7 +53,10 @@ function getModules(student, id, label) {
     });
     
     console.log(LEVEL_5);
-  } else {
+    return LEVEL_5;
+
+  } 
+  if (is_LVL6) {
     const LEVEL_6 = [];
     
     const slicedModules = Object.values(sModules).slice(0, 5);
