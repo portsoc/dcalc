@@ -1,6 +1,6 @@
 function getModules(student, id, label) {
   // student does NOT exist, display warning message and cancel request
-  if (student.studentModules === null || student.studentModules === undefined) {
+  if (!student.studentModules) {
     label.textContent = `Sorry the student ${id} does not exist`;
     return null;
   }
