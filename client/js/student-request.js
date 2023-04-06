@@ -19,6 +19,7 @@ function getModules(student, id, label) {
 
   
   console.log(is_LVLFive);
+
   // confirm whether module grades are from level 5 or 6
   if (is_LVLFive) {
     const LEVEL_5 = [];
@@ -43,6 +44,42 @@ function getModules(student, id, label) {
     });
     
     console.log(LEVEL_5);
+  } else {
+    const LEVEL_6 = [];
+    
+    const slicedModules = Object.values(sModules).slice(0, 5);
+    slicedModules.forEach((module, i) => {
+      const isFinalProject = i === slicedModules.length - 1;
+      
+      const modMarks = {
+        name: module.name,
+        marks: module.marks.agreedModuleMark
+      };
+      LEVEL_6.push(modMarks);
+      
+      if (isFinalProject) {
+        const finProject = document.querySelector(`#fyp`);
+        const finSlider = document.querySelector(`#fyp.range-input`);
+        if (modMarks.marks) {
+          finProject.value = modMarks.marks;
+          finSlider.value = modMarks.marks;
+        }
+      } else {
+
+        const modNameInput = document.querySelector(`#l6name${i+1}`);
+        const modSlider = document.querySelector(`#l6mark${i+1}`);
+        const moduleMarksInput = document.querySelector(`#l6mark${i+1}output`);
+        modNameInput.value = modMarks.name;
+        // check if marks exist for a specific module (i.e. not null)
+        if (modMarks.marks) {
+          console.log(modMarks.marks);
+          modSlider.value = modMarks.marks;
+          moduleMarksInput.value = modMarks.marks;
+        }
+      }
+    });
+    console.log(LEVEL_6);
+    
   }
 }
 
