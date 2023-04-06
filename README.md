@@ -10,17 +10,39 @@ Ideally, this implementation will eventually be merged into the original and be 
 
 This implementation can be run locally.
 
-To do so:
+1. Make sure you have `git pull` this branch, up to date.
+2. Ensure that the `package.json` file in the base has the correct starting script. It should run `npm install` and `server.js` and the `config/openssl.cnf` file.
+The start line should look something like this: 
+`"npm install && set OPENSSL_CONF=YOUR\\PATH\\dcalc_ext\\config\\openssl.cnf && node server.js"`
+1. Connect to the University VPN.
+2. Start the webapp by typing `npm start` in the console of VSCode. Then when it has told you this message:
+```
+> dcalc_ext@1.0.0 start        
+> npm install && set OPENSSL_CONF=YOUR\\PATH\\dcalc_ext\\config\\openssl.cnf && node server.js
 
-1. You will need an API key to be able to make requests to the University API, as well as be connected to the University VPN.
+up to date, audited 64 packages in 2s
 
-2. When you have cloned the repository locally, you need to add the API key to a `headers.json` file in the `config` directory.
+10 packages are looking for funding  
+  run `npm fund` for details
 
-3. Then you need to run `npm i express` to install the required `express` framework.
+found 0 vulnerabilities
+server enabled
+```
+Navigate to your browser and access localhost:80
+5. This should open the webapp and it should be functional. You may need to refresh the page to clear the cache if you are experiencing any oddities.
+6. Use some of the following UP numbers to test the module input functionality:
+```
+Level 5's;
+- 369163290
+- 369174131 (3 modules)
+- 369143394 (4 modules)
 
-4. After that is done ensure that your path is setup correctly in the `package.json` file to run the `openssl.cnf` file as well as the `server.js` file simultaneously.
-
-You will then be able to open the page on the `localhost` port it is set to.
+Level 6's;
+- 369147309
+- 369138991
+- 369116657 (1 module)
+```
+7. Make note of whether or not it functioned as expected in the Discord chat.
 
 ## Authors
 
