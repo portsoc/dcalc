@@ -13,7 +13,6 @@ const data = await load('./config/data.json');
 const options = { headers: await load('./config/headers.json') };
 
 app.all('*', async (req, res) => {
-  console.log(`Request: ${req.path}`);
   const route = req.path;
   const gatewayUrl = 'https://t-esbprep-apigw.port.ac.uk/gateway/BiDataWarehouseSitsCourseModuleAssessmentAPI';
   const gatewayRequestUrl = gatewayUrl + route + data.years.sep22;

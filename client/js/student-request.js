@@ -34,7 +34,6 @@ function getModules(student, id, label) {
       modNameInput.value = modMarks.name;
       // check if marks exist for a specific module (i.e. not null)
       if (modMarks.marks) {
-        console.log(modMarks.marks);
         modSlider.value = modMarks.marks;
         moduleMarksInput.value = modMarks.marks;
       }
@@ -80,13 +79,11 @@ function getModules(student, id, label) {
         modNameInput.value = modMarks.name;
         // check if marks exist for a specific module (i.e. not null)
         if (modMarks.marks) {
-          console.log(modMarks.marks);
           modSlider.value = modMarks.marks;
           moduleMarksInput.value = modMarks.marks;
         }
       }
     });
-    console.log(LEVEL_6);
     
   }
 }
@@ -95,6 +92,5 @@ export default async function getStudentData(id, label) {
   const route = `student/SOC/tutorial/${id.slice(2)}/`;
   const response = await fetch(route);
   const { studentModules } = await response.json();
-  console.log({studentModules});
   const student = await getModules({ studentModules }, id, label);
 }
