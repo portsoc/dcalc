@@ -10,14 +10,13 @@ function getModules(student, id, label) {
 
   const sModules = student.studentModules.modules;
   // confirm all modules are from level 5
-  console.log(sModules);
   const is_LVLFive = Object.values(sModules).every(module => module.level === 5);
   
   // confirm whether module grades are from level 5 or 6
   if (is_LVLFive) {
     const LEVEL_5 = [];
     
-    Object.values(sModules).forEach((module, i) => {
+    Object.values(sModules).slice(0, 6).forEach((module, i) => {
       const modMarks = {
         name: module.name,
         marks: module.marks.agreedModuleMark
