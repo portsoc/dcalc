@@ -79,9 +79,39 @@ function init() {
 
   validity.init();
   loadModules();
+
+  toggleTheme();
 }
 
+async function toggleTheme() {
+  const toggler = document.querySelector('#theme-switch'),
+        root = document.documentElement,
+        currentTheme = localStorage.getItem('theme') || 'dark';
 
+  if (currentTheme === 'light') {
+    toggler.removeAttribute('checked');
+  } else {
+    toggler.checked = true;
+  }
+
+  root.setAttribute('data-theme', currentTheme);
+
+  toggler.addEventListener('change', handleToggle, false);
+
+  function handleToggle(e) {
+    if (this.checked) {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      console.log('Theme has been changed to: dark');
+    } else {
+      root.setAttribute('data-theme', 'light');
+      localStorage.setItem('theme', 'light');
+      console.log('Theme has been changed to: light');
+    }
+
+    console.log(`Current theme is: ${localStorage.getItem('theme')}`);
+  }
+}
 
 async function loadModules() {
   try {

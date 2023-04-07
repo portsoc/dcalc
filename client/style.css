@@ -84,7 +84,7 @@ section {
 
 /*********************************************
  * UP NUMBER INPUT
- https://uiverse.io/Satwinder04/pink-bat-77
+ Adapted from - https://uiverse.io/Satwinder04/pink-bat-77
  *********************************************/
 
 #up-number-input{
@@ -256,7 +256,7 @@ input:focus {
 
 
 .lock-button {
-  background-image: url("./img/lock-icon.png");
+  background-image: url("./img/unlock-icon.png");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -264,6 +264,10 @@ input:focus {
   height: flex; 
   border: none;
   cursor: pointer;
+}
+
+.lock-button.disabled {
+  background-image: url("./img/lock-icon.png");
 }
 
 #ClearButtonDiv{
@@ -274,7 +278,8 @@ input:focus {
 
 /* following CSS is adapted from: https://uiverse.io/e-coders/nervous-chipmunk-49 */
 
-#ClearButton {
+#ClearButton,
+#copy {
   background-color: #FAFBFC;
   border: 1px solid rgba(27, 31, 35, 0.15);
   border-radius: 6px;
@@ -314,13 +319,36 @@ input:focus {
  * SHARE INDICATION
  *********************************************/
 
-#copyzone {
+ #copyzone {
   display: flex;
+}
+
+#share {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  margin: 1em auto;
+  width: 50vw;
+  text-align: center;
 }
 
 #copyzone input {
   flex-grow: 1;
   margin-right: 1ch;
+}
+
+#share p {
+  margin-top: 0;
+}
+
+#share input {
+  font-size: 1rem;
+}
+
+#showingShared {
+  flex-basis: 100%;
+  text-align: center;
 }
 
 
@@ -349,19 +377,41 @@ input:focus {
 }
 
 /*********************************************
- * SHARE
+ * THEME SWITCH CHECKBOX
  *********************************************/
 
-#share {
-  display: flex;
-  flex-direction: column;
+ #theme-switch {
+  display: none;
 }
 
-#share p { margin-top: 0; }
-#share input { font-size: 1rem; }
-#showingShared {
-  flex: 0 0 100%;
-  text-align: center;
+label[for="theme-switch"] {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background-color: #ccc;
+  border-radius: 15px;
+  position: relative;
+}
+
+label[for="theme-switch"]:after {
+  content: "";
+  display: block;
+  width: 26px;
+  height: 26px;
+  border-radius: 13px;
+  background-color: white;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  transition: all 0.2s;
+}
+
+#theme-switch:checked + label[for="theme-switch"] {
+  background-color: #333;
+}
+
+#theme-switch:checked + label[for="theme-switch"]:after {
+  left: 32px;
 }
 
 /*********************************************
@@ -393,6 +443,16 @@ dd {
   padding: 0 1em 1em 2em;
   border-radius: 0 0 0.5em 0.5em;
   transition: var(--trans);
+}
+
+#rule-explanation{
+  width: 100%;
+}
+
+#grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
 }
 
 #rule-explanation a:link {
