@@ -135,15 +135,15 @@ async function loadModules() {
     });
     console.warn("HERE");
 
-    const textInputs15 = document.querySelectorAll('.15 input');
+    const textInputs15 = document.querySelectorAll('input[class="15"]');
     textInputs15.forEach(input => {
       document.querySelector('#module-list').append(...elemsSecondYear);
     });
 
-    const textInputs16 = document.querySelectorAll('.16 input');
+    const textInputs16 = document.querySelectorAll('input[class="16"]');
     textInputs16.forEach(input => {
       document.querySelector('#module-list').append(...elemsFinalYear);
-    });console.log("5");
+    });console.log("HERE FINISHED");
 
   } catch (e) {
     console.error('Failed to load list of modules, using defaults', e);
