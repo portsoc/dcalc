@@ -118,16 +118,11 @@ async function toggleTheme() {
 async function loadModules() {
   try {
     const response = await fetch('modules.csv');
-    if (!response.ok) {
-      throw new Error(`Failed to load list of modules (${response.status} ${response.statusText})`);
-    }
-    const text = await response.text();
-    const lines = text.split('\n');
-    const elems = lines.map(line => {
-      const values = line.split(',');
+    const modules = (await response.text()).split('\n');
+    const elems = modules.map(row => {
+      const cols = row.split(',');
       const e = document.createElement('option');
-      e.value = values[0];
-      e.innerText = values[1];
+      e.value = cols[0];
       return e;
     });
     document.querySelector('#module-list').append(...elems);
