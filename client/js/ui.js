@@ -113,9 +113,13 @@ async function toggleTheme() {
   }
 }
 
+/// displaying the modules in their respective year text input field
 async function loadModules() {
   try {
-    const response = await fetch('modules.txt');
+    const response = await fetch('modules.csv');
+    if (!response.ok) {
+      throw new Error(`Failed to load list of modules (${response.status} ${response.statusText})`);
+    }
     const modules = (await response.text()).split('\n');
     const elems = modules.map(module => {
       const e = document.createElement('option');
