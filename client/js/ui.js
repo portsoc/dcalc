@@ -114,16 +114,20 @@ async function toggleTheme() {
 }
 
 /// displaying the modules in their respective year text input field
+
 async function loadModules() {
   try {
     const response = await fetch('modules.csv');
     if (!response.ok) {
       throw new Error(`Failed to load list of modules (${response.status} ${response.statusText})`);
     }
-    const modules = (await response.text()).split('\n');
-    const elems = modules.map(module => {
+    const text = await response.text();
+    const lines = text.split('\n');
+    const elems = lines.map(line => {
+      const values = line.split(',');
       const e = document.createElement('option');
-      e.value = module;
+      e.value = values[0];
+      e.innerText = values[1];
       return e;
     });
     document.querySelector('#module-list').append(...elems);
@@ -131,6 +135,8 @@ async function loadModules() {
     console.error('Failed to load list of modules, using defaults', e);
   }
 }
+
+// END of module list func
 
 function createShareLink() {
   let link = window.location.origin + window.location.pathname + '?share';
