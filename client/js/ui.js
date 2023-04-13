@@ -118,14 +118,33 @@ async function toggleTheme() {
 async function loadModules() {
   try {
     const response = await fetch('modules.csv');
-    const modules = (await response.text()).split('\n');
-    const elems = modules.map(row => {
-      const cols = row.split(',');
+    const data = await response.text();
+    const modules = data.split('\n').map(row => row.split(',')[0]);// select firs column
+    const modulesFinalYear = modules.filter(module => module.endsWith('final_year'));
+    const modulesSecondYear = modules.filter(module => module.endsWith('second_year'));
+
+    const elemsFinalYear = modulesFinalYear.map(module => {
       const e = document.createElement('option');
-      e.value = cols[0];
+      e.value = module;
       return e;
     });
-    document.querySelector('#module-list').append(...elems);
+    const elemsSecondYear = modulesSecondYear.map(module => {
+      const e = document.createElement('option');
+      e.value = module;
+      return e;
+    });
+    console.warn("HERE");
+
+    const textInputs15 = document.querySelectorAll('.15 input');
+    textInputs15.forEach(input => {
+      document.querySelector('#module-list').append(...elemsSecondYear);
+    });
+
+    const textInputs16 = document.querySelectorAll('.16 input');
+    textInputs16.forEach(input => {
+      document.querySelector('#module-list').append(...elemsFinalYear);
+    });console.log("5");
+
   } catch (e) {
     console.error('Failed to load list of modules, using defaults', e);
   }
