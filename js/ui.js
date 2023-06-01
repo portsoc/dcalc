@@ -95,7 +95,8 @@ function loadSavedMarks() {
 }
 
 function recalculate() {
-  const marks = gatherMarksFromPage();
+  const pageMarks = gatherMarksFromPage();
+  const marks = validateMarks(pageMarks);
 
   if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
@@ -131,6 +132,14 @@ function recalculate() {
   document.querySelector('#finalClassification').textContent = finalClassification;
 
   document.querySelector('#gpa').textContent = rules.gpa(marks);
+}
+
+function validateMarks(marks) {
+  return {
+    fyp: marks.fyp > 100 ? 100 : marks.fyp,
+    l5: marks.l5.map((m) => m > 100 ? 100 : m),
+    l6: marks.l6.map((m) => m > 100 ? 100 : m)
+  }
 }
 
 function isAnyMarkUnder40(marks) {
