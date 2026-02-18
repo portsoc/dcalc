@@ -6,12 +6,12 @@ rules:
 
 a) the classification of the weighted mean of all relevant credits at Level 5 and all relevant credits at Level 6 in the ratio of 40:60 respectively after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6;
 b) the classification of the weighted mean of all relevant credits at Level 6 after first discounting the marks in the worst 20 credits at Level 6;
-c) the minimum classification in which more than 50% of the combined relevant credits at Level 5 and Level 6 were attained after first discounting the marks in the worst 20 credits both at Level 5 and at Level 6
+c) REMOVED (2025): Rule C was removed from the regulations in 2025 and is no longer applied. The codebase retains this note for historical reference.
 
 rules summary:
 a) l5mean * 0.4 + l6mean * 0.6
 b) l6mean
-c) just past the middle
+// c) removed in 2025 and intentionally omitted from implementation
 
 source: https://regulations.docstore.port.ac.uk/ExamRegs9BoardofExaminers.pdf
 
@@ -93,11 +93,7 @@ export function ruleB(marks) {
   return Math.round(l6mean);
 }
 
-export function ruleC(marks) {
-  const allMarks = marks.prepared.l5.concat(marks.prepared.l6);
-  allMarks.sort(reverseNumericalComparison);
-  return Math.round(allMarks[allMarks.length / 2]);
-}
+// Rule C implementation removed in 2025. See note above.
 
 function mean(array) {
   return array.reduce((a, b) => a + b) / array.length;

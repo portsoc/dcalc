@@ -100,7 +100,6 @@ function recalculate() {
   if (!marks) {
     document.querySelector('#ruleA').textContent = 'n/a';
     document.querySelector('#ruleB').textContent = 'n/a';
-    document.querySelector('#ruleC').textContent = 'n/a';
     document.querySelector('#finalClassification').textContent = 'not enough data';
     document.querySelector('#gpa').textContent = 'n/a';
     return;
@@ -109,7 +108,6 @@ function recalculate() {
   if (isAnyMarkUnder40(marks)) {
     document.querySelector('#ruleA').textContent = 'n/a';
     document.querySelector('#ruleB').textContent = 'n/a';
-    document.querySelector('#ruleC').textContent = 'n/a';
     document.querySelector('#finalClassification').textContent = 'failed a module, no degree classification';
     document.querySelector('#gpa').textContent = 'n/a';
     return;
@@ -119,13 +117,11 @@ function recalculate() {
 
   const a = rules.ruleA(marks);
   const b = rules.ruleB(marks);
-  const c = rules.ruleC(marks);
 
   document.querySelector('#ruleA').textContent = a;
   document.querySelector('#ruleB').textContent = b;
-  document.querySelector('#ruleC').textContent = c;
 
-  const finalMark = Math.max(a, b, c);
+  const finalMark = Math.max(a, b);
   const finalClassification = rules.toClassification(finalMark);
 
   document.querySelector('#finalClassification').textContent = finalClassification;
