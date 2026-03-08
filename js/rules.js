@@ -48,22 +48,29 @@ export function prepareMarks(marks) {
 
   marks.prepared.l5 = marks.l5.slice();
   marks.prepared.l5.sort(reverseNumericalComparison);
-  marks.prepared.l5.length = 5;
+  marks.prepared.l5Lowest = marks.prepared.l5.pop();
 
   marks.prepared.l6 = marks.l6.slice();
   marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.push(marks.fyp);
   marks.prepared.l6.sort(reverseNumericalComparison);
-  marks.prepared.l6.length = 5;
+  marks.prepared.l6Lowest = marks.prepared.l6.pop();
 
   marks.prepared.l6.sort(reverseNumericalComparison);
 
   // add GPA
   marks.prepared.l5gpa = marks.prepared.l5.map(gradeToGPA);
   marks.prepared.l6gpa = marks.prepared.l6.map(gradeToGPA);
+
+  // add Calculations
+  const l5mean = Math.round(mean(marks.prepared.l5));
+  marks.prepared.l5Calc = `${marks.prepared.l5.join('+')} / ${marks.prepared.l5.length} = ${l5mean}`;
+
+  const l6mean = Math.round(mean(marks.prepared.l6));
+  marks.prepared.l6Calc = `${marks.prepared.l6.join('+')} / ${marks.prepared.l6.length} = ${l6mean}`;
 }
 
-function reverseNumericalComparison(a, b) {
+export function reverseNumericalComparison(a, b) {
   return b - a;
 }
 
@@ -95,7 +102,7 @@ export function ruleB(marks) {
 
 // Rule C implementation removed in 2025. See note above.
 
-function mean(array) {
+export function mean(array) {
   return array.reduce((a, b) => a + b) / array.length;
 }
 
